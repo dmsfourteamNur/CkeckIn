@@ -6,8 +6,11 @@ import UseCases.Queries.GetAll.GetCheckInAllHandler;
 import UseCases.Queries.GetById.GetCheckInByIdHandler;
 import factories.CheckInFactory;
 import factories.ICheckInFactory;
+import factories.itinerario.IitinerarioFactory;
+import factories.itinerario.ItinerarioFactory;
 import Fourteam.extensions.IServiceCollection;
 import Fourteam.mediator.IMediator;
+import Modal.Itinerario;
 
 public class Extensions {
 
@@ -19,6 +22,7 @@ public class Extensions {
     IMediator.registerHandler(GetCheckInAllHandler.class);
     IMediator.registerHandler(PublishIntegrationEventWhenCheckInCreadoHandler.class);
     IServiceCollection.AddTransient(ICheckInFactory.class, CheckInFactory.class);
+    IServiceCollection.AddTransient(IitinerarioFactory.class, ItinerarioFactory.class);
     Domain.addDomain();
   }
 }

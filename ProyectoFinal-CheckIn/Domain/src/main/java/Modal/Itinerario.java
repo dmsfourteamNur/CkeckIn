@@ -1,29 +1,31 @@
 package Modal;
 
 import core.AggregateRoot;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public class Itinerario extends AggregateRoot<UUID> {
 
+  private String keyVuelo;
   private String ciudadOrigen;
   private String ciudadDestino;
   private Date fechaSalida;
   private Date fechaArribe;
   private List<Asiento> asiento;
 
-  public Itinerario() {}
+  public Itinerario() {
+  }
 
   public Itinerario(
-    UUID keyVuelo,
-    String ciudadOrigen,
-    String ciudadDestino,
-    Date fechaSalida,
-    Date fechaArribe
-  ) {
-    this.key = keyVuelo;
+      String keyVuelo,
+      String ciudadOrigen,
+      String ciudadDestino,
+      Date fechaSalida,
+      Date fechaArribe) {
+    this.key = UUID.randomUUID();
+    this.keyVuelo = keyVuelo;
     this.ciudadOrigen = ciudadOrigen;
     this.ciudadDestino = ciudadDestino;
     this.fechaArribe = fechaArribe;
@@ -36,12 +38,12 @@ public class Itinerario extends AggregateRoot<UUID> {
     asiento.add(asientos);
   }
 
-  public UUID getKeyVuelo() {
-    return this.key;
+  public String getKeyVuelo() {
+    return this.keyVuelo;
   }
 
-  public void setKeyVuelo(UUID keyVuelo) {
-    this.key = keyVuelo;
+  public void setKeyVuelo(String keyVuelo) {
+    this.keyVuelo = keyVuelo;
   }
 
   public String getCiudadOrigen() {
@@ -60,14 +62,6 @@ public class Itinerario extends AggregateRoot<UUID> {
     this.ciudadDestino = ciudadDestino;
   }
 
-  public List<Asiento> getAsiento() {
-    return this.asiento;
-  }
-
-  public void setAsiento(List<Asiento> asiento) {
-    this.asiento = asiento;
-  }
-
   public Date getFechaSalida() {
     return this.fechaSalida;
   }
@@ -83,4 +77,13 @@ public class Itinerario extends AggregateRoot<UUID> {
   public void setFechaArribe(Date fechaArribe) {
     this.fechaArribe = fechaArribe;
   }
+
+  public List<Asiento> getAsiento() {
+    return this.asiento;
+  }
+
+  public void setAsiento(List<Asiento> asiento) {
+    this.asiento = asiento;
+  }
+
 }

@@ -7,7 +7,7 @@ import Fourteam.mediator.Notification;
 import Fourteam.mediator.NotificationHandler;
 
 public class PublishIntegrationEventWhenCheckInCreadoHandler
-  implements NotificationHandler<ConfirmedDomainEvent<CheckInCreado>> {
+    implements NotificationHandler<ConfirmedDomainEvent<CheckInCreado>> {
 
   private IPublishEndpoint publishEndpoint;
 
