@@ -4,7 +4,7 @@ import Dto.CheckInDto;
 import Fourteam.mediator.Request;
 import java.util.UUID;
 
-public class CrearCheckInCommand implements Request<CheckInDto> {
+public class CrearCheckInCommand implements Request<UUID> {
 
   public CheckInDto checkInDto;
 

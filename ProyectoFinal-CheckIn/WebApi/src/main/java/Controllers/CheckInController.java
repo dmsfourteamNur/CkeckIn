@@ -27,9 +27,8 @@ public class CheckInController {
   }
 
   @PostMapping("/registro")
-  public String register(@RequestBody CrearCheckInCommand checkInCommand) throws Exception {
-    return "hola ";
-    // return (UUID) _mediator.send(checkInCommand).data;
+  public UUID register(@RequestBody CrearCheckInCommand checkInCommand) throws Exception {
+    return (UUID) _mediator.send(checkInCommand).data;
   }
 
   @GetMapping("/")

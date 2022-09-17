@@ -2,7 +2,6 @@ package UseCases.Queries.GetAll;
 
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
-import Fourteam.http.Exception.HttpException;
 import Fourteam.mediator.RequestHandler;
 import java.util.List;
 
