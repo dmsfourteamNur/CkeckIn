@@ -20,9 +20,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>dmsnur</groupId>
-            <artifactId>SharedKernel</artifactId>
-            <version>1.0</version>
+          <groupId>dmsnur</groupId>
+          <artifactId>SharedKernel</artifactId>
+          <version>1.7</version>
+          <scope>system</scope>
+          <systemPath>${basedir}/lib/SharedKernel-latest.jar</systemPath>
         </dependency>
     </dependencies>
 

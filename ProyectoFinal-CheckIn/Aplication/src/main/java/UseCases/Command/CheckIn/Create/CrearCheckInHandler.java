@@ -5,7 +5,7 @@ import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
 import Services.CheckInServices;
 import factories.ICheckInFactory;
-import fourteam.mediator.RequestHandler;
+import Fourteam.mediator.RequestHandler;
 import java.util.UUID;
 
 public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, UUID> {

@@ -1,13 +1,13 @@
 import EF.Contexts.IWriteDbContext;
-import EF.Contexts.MongoDb.WriteDbContext;
+import EF.Contexts.MongoDB.*;
 import EF.Repository.CheckInRepository;
 import EF.UnitOfWork;
 import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
 import UseCases.Consumers.VentaCreadoConsumer;
 import UseCases.Consumers.VueloCreadoConsumer;
-import fourteam.config.Config;
-import fourteam.extensions.IServiceCollection;
+import Fourteam.config.Config;
+import Fourteam.extensions.IServiceCollection;
 
 public class ExtensionsInfrastructure {
 

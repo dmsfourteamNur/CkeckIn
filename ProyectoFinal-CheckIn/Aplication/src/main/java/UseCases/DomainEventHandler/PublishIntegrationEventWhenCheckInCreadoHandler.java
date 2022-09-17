@@ -2,9 +2,9 @@ package UseCases.DomainEventHandler;
 
 import Events.CheckInCreado;
 import core.ConfirmedDomainEvent;
-import fourteam.massTransit.IPublishEndpoint;
-import fourteam.mediator.Notification;
-import fourteam.mediator.NotificationHandler;
+import Fourteam.massTransit.IPublishEndpoint;
+import Fourteam.mediator.Notification;
+import Fourteam.mediator.NotificationHandler;
 
 public class PublishIntegrationEventWhenCheckInCreadoHandler
   implements NotificationHandler<ConfirmedDomainEvent<CheckInCreado>> {

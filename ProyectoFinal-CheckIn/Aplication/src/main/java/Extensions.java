@@ -6,8 +6,8 @@ import UseCases.Queries.GetAll.GetCheckInAllHandler;
 import UseCases.Queries.GetById.GetCheckInByIdHandler;
 import factories.CheckInFactory;
 import factories.ICheckInFactory;
-import fourteam.extensions.IServiceCollection;
-import fourteam.mediator.IMediator;
+import Fourteam.extensions.IServiceCollection;
+import Fourteam.mediator.IMediator;
 
 public class Extensions {
 

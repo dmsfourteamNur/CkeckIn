@@ -13,8 +13,6 @@
         <module>Aplication</module>
         <module>Infraestructure</module>
         <module>WebApi</module>
-        <module>SharedKernel</module>
-        <module>FourTeam</module>
     </modules>
 
     <properties>

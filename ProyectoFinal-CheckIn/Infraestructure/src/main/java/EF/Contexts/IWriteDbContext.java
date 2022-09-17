@@ -2,9 +2,9 @@ package EF.Contexts;
 
 import Modal.CheckIn;
 import Modal.Equipaje;
-import fourteam.db.DbContext;
-import fourteam.db.DbSet;
-import fourteam.db.Exception.DataBaseException;
+import Fourteam.db.DbContext;
+import Fourteam.db.DbSet;
+import Fourteam.db.Exception.DataBaseException;
 
 public abstract class IWriteDbContext extends DbContext {
 

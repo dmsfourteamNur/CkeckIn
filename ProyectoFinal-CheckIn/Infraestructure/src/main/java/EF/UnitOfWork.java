@@ -4,7 +4,7 @@ import EF.Contexts.IWriteDbContext;
 import Repositories.IUnitOfWork;
 import core.ConfirmedDomainEvent;
 import core.DomainEvent;
-import fourteam.mediator.Mediator;
+import Fourteam.mediator.Mediator;
 import java.util.List;
 
 public class UnitOfWork implements IUnitOfWork {

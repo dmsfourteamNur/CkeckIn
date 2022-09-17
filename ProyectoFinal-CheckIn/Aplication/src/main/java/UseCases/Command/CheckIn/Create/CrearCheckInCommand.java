@@ -1,7 +1,7 @@
 package UseCases.Command.CheckIn.Create;
 
 import Dto.CheckInDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 import java.util.UUID;
 
 public class CrearCheckInCommand implements Request<CheckInDto> {

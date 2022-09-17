@@ -4,7 +4,7 @@ import Dto.CheckInDto;
 import Dto.EquipajeDto;
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
-import fourteam.mediator.RequestHandler;
+import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 

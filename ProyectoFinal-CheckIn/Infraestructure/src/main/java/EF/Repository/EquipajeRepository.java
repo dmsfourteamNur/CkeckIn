@@ -3,7 +3,7 @@ package EF.Repository;
 import EF.Contexts.IWriteDbContext;
 import Modal.Equipaje;
 import Repositories.IequipajeRepository;
-import fourteam.db.DbSet;
+import Fourteam.db.DbSet;
 import java.util.List;
 import java.util.UUID;
 

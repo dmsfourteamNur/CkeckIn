@@ -1,7 +1,7 @@
 package UseCases.Queries.GetAll;
 
 import Dto.CheckInDto;
-import fourteam.mediator.Request;
+import Fourteam.mediator.Request;
 
 public class GetCheckInAllQuery implements Request<CheckInDto> {
 

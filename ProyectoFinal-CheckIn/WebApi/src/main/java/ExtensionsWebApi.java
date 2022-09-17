@@ -1,6 +1,6 @@
 import Controllers.CheckInController;
-import fourteam.config.Config;
-import fourteam.http.Rest;
+import Fourteam.config.Config;
+import Fourteam.http.Rest;
 
 public class ExtensionsWebApi {
 

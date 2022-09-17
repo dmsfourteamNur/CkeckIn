@@ -2,8 +2,8 @@ package UseCases.Queries.GetAll;
 
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
-import fourteam.http.Exception.HttpException;
-import fourteam.mediator.RequestHandler;
+import Fourteam.http.Exception.HttpException;
+import Fourteam.mediator.RequestHandler;
 import java.util.List;
 
 public class GetCheckInAllHandler implements RequestHandler<GetCheckInAllQuery, List<CheckIn>> {

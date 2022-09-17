@@ -6,8 +6,8 @@ import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 import UseCases.Command.CheckIn.Edit.EditCheckInCommand;
 import UseCases.Queries.GetAll.GetCheckInAllQuery;
 import UseCases.Queries.GetById.GetCheckInByIdQuery;
-import fourteam.http.annotation.*;
-import fourteam.mediator.Mediator;
+import Fourteam.http.annotation.*;
+import Fourteam.mediator.Mediator;
 import java.util.List;
 import java.util.UUID;
 

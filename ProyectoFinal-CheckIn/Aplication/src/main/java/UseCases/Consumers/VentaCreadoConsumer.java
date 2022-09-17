@@ -3,7 +3,7 @@ package UseCases.Consumers;
 import Modal.Pasajero;
 import Repositories.IUnitOfWork;
 import Repositories.IpasajeroRepository;
-import fourteam.massTransit.IConsumer;
+import Fourteam.massTransit.IConsumer;
 
 public class VentaCreadoConsumer extends IConsumer<IntegrationEvents.VentaCreado> {
 
@@ -18,15 +18,14 @@ public class VentaCreadoConsumer extends IConsumer<IntegrationEvents.VentaCreado
   }
 
   @Override
-  public void Consume(IntegrationEvents.VentaCreado object) throws Exception {
-    Pasajero pasajero = new Pasajero(
-      object.getKey(),
-      object.getKeyVuelo(),
-      object.getNombre(),
-      object.getApellido(),
-      object.getDni()
-    );
-    ipasajeroRepository.Create(pasajero);
-    _unitOfWork.commit();
+  public void Consume(IntegrationEvents.VentaCreado object) {
+    // Pasajero pasajero = new Pasajero(
+    //     object.getKey(),
+    //     object.getKeyVuelo(),
+    //     object.getNombre(),
+    //     object.getApellido(),
+    //     object.getDni());
+    // ipasajeroRepository.Create(pasajero);
+    // _unitOfWork.commit();
   }
 }
