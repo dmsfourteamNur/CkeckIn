@@ -1,0 +1,168 @@
+{
+  "info": {
+    "_postman_id": "ca798c93-727e-4434-ad3d-fbfe5d626732",
+    "name": "CheckIn",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "16708559"
+  },
+  "item": [
+    {
+      "name": "Registro",
+      "item": [
+        {
+          "name": "registro",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", ()=>{",
+                  "    pm.response.to.have.status(200);",
+                  "    var data = pm.response.json().data.key;",
+                  "    pm.environment.set(\"key_checkIn\",data);",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"EstadoPaciente\": false,\n\t\"Descripcion\": \"fiebre\",\n\t\"Asiento\": 15,\n\t\"EquipajeDto\":[{\n\t\t\"PesoEquipaje\"  : 10.3,\n\t\t\"NumeroEtiqueta\" : \"2222f2\",\n\t\t\"Descripcion\"   : \"maleta negra\"\n\t},\n\t{\n\t\t\"PesoEquipaje\"  : 8.3,\n\t\t\"NumeroEtiqueta\" : \"11111\",\n\t\t\"Descripcion\"   : \"maleta grandre\"\n\t}]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/checkin/registro",
+              "host": ["{{url}}"],
+              "path": ["checkin", "registro"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "edit",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"CodigoSeguridad\": \"0000002222\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/checkin/{{key_checkIn}}",
+              "host": ["{{url}}"],
+              "path": ["checkin", "{{key_checkIn}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getByKey",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/checkin/{{key_checkIn}}",
+              "host": ["{{url}}"],
+              "path": ["checkin", "{{key_checkIn}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/checkin/{{key_checkIn}}",
+              "host": ["{{url}}"],
+              "path": ["checkin", "{{key_checkIn}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getAll",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\",()=>{",
+                  "    pm.response.to.have.status(200)",
+                  "})",
+                  "pm.test(\"Response not empty\",()=>{",
+                  "    pm.expect(pm.response.text()).not.empty;",
+                  "})"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}/checkin/",
+              "host": ["{{url}}"],
+              "path": ["checkin", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
