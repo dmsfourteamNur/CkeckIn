@@ -7,9 +7,9 @@ import java.util.UUID;
 
 public interface IitinerarioFactory {
   Itinerario Create(
-      String key,
-      String ciudadOrigen,
-      String ciudadDestino,
+      UUID key,
+      UUID ciudadOrigen,
+      UUID ciudadDestino,
       Date fechaSalida,
       Date fechaArribe);
 }

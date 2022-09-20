@@ -5,7 +5,7 @@ import java.util.UUID;
 public class PasajeroDto {
 
   private UUID key;
-  private UUID keyVuelo;
+  private String keyVuelo;
   private String nombre;
   private String apellido;
   private int dni;
@@ -18,11 +18,11 @@ public class PasajeroDto {
     this.key = key;
   }
 
-  public UUID getKeyVuelo() {
+  public String getKeyVuelo() {
     return this.keyVuelo;
   }
 
-  public void setKeyVuelo(UUID keyVuelo) {
+  public void setKeyVuelo(String keyVuelo) {
     this.keyVuelo = keyVuelo;
   }
 

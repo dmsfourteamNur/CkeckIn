@@ -18,9 +18,13 @@ public class PublishIntegrationEventWhenCheckInCreadoHandler
   @Override
   public void handle(Notification notification) {
     ConfirmedDomainEvent event = (ConfirmedDomainEvent) notification;
+
     CheckInCreado checkInCreado = (CheckInCreado) event.DomainEvent;
+
     IntegrationEvents.AeronaveCreado evento = new IntegrationEvents.AeronaveCreado();
+
     evento.setKeyAeronave(checkInCreado.getKey());
+
     this.publishEndpoint.Publish(event);
   }
 }

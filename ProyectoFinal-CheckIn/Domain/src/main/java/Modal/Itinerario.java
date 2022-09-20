@@ -8,24 +8,19 @@ import java.util.UUID;
 
 public class Itinerario extends AggregateRoot<UUID> {
 
-  private String keyVuelo;
-  private String ciudadOrigen;
-  private String ciudadDestino;
+  private UUID ciudadOrigen;
+  private UUID ciudadDestino;
   private Date fechaSalida;
   private Date fechaArribe;
   private List<Asiento> asiento;
 
-  public Itinerario() {
-  }
-
   public Itinerario(
-      String keyVuelo,
-      String ciudadOrigen,
-      String ciudadDestino,
+      UUID keyVuelo,
+      UUID ciudadOrigen,
+      UUID ciudadDestino,
       Date fechaSalida,
       Date fechaArribe) {
-    this.key = UUID.randomUUID();
-    this.keyVuelo = keyVuelo;
+    this.key = keyVuelo;
     this.ciudadOrigen = ciudadOrigen;
     this.ciudadDestino = ciudadDestino;
     this.fechaArribe = fechaArribe;
@@ -33,32 +28,24 @@ public class Itinerario extends AggregateRoot<UUID> {
     this.asiento = new ArrayList<Asiento>();
   }
 
-  public void AgregarAsientos(UUID key, String numeroAsiento, int disponibilidad) {
+  public void AgregarAsientos(UUID key, int numeroAsiento, int disponibilidad) {
     Asiento asientos = new Asiento(key, numeroAsiento, disponibilidad);
     asiento.add(asientos);
   }
 
-  public String getKeyVuelo() {
-    return this.keyVuelo;
-  }
-
-  public void setKeyVuelo(String keyVuelo) {
-    this.keyVuelo = keyVuelo;
-  }
-
-  public String getCiudadOrigen() {
+  public UUID getCiudadOrigen() {
     return this.ciudadOrigen;
   }
 
-  public void setCiudadOrigen(String ciudadOrigen) {
+  public void setCiudadOrigen(UUID ciudadOrigen) {
     this.ciudadOrigen = ciudadOrigen;
   }
 
-  public String getCiudadDestino() {
+  public UUID getCiudadDestino() {
     return this.ciudadDestino;
   }
 
-  public void setCiudadDestino(String ciudadDestino) {
+  public void setCiudadDestino(UUID ciudadDestino) {
     this.ciudadDestino = ciudadDestino;
   }
 

@@ -1,10 +1,12 @@
 package Controllers;
 
 import Dto.CheckInDto;
+import Dto.PasajeroDto;
 import UseCases.Command.CheckIn.Create.CrearCheckInCommand;
 import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 import UseCases.Command.CheckIn.Edit.EditCheckInCommand;
 import UseCases.Queries.GetAll.GetCheckInAllQuery;
+import UseCases.Queries.GetAllVenta.GetpasajeroAllQuery;
 import UseCases.Queries.GetById.GetCheckInByIdQuery;
 import Fourteam.http.annotation.*;
 import Fourteam.mediator.Mediator;
@@ -36,11 +38,15 @@ public class CheckInController {
     return (List<CheckInDto>) _mediator.send(new GetCheckInAllQuery()).data;
   }
 
+  @GetMapping("/venta")
+  public List<PasajeroDto> getAllVenta() throws Exception {
+    return (List<PasajeroDto>) _mediator.send(new GetpasajeroAllQuery()).data;
+  }
+
   @PutMapping("/{key}")
   public CheckInDto edit(
-    @RequestBody CheckInDto checkInDto,
-    @PathVariable EditCheckInCommand request
-  ) throws Exception {
+      @RequestBody CheckInDto checkInDto,
+      @PathVariable EditCheckInCommand request) throws Exception {
     request.checkInDto.CodigoSeguridad = checkInDto.CodigoSeguridad;
     return (CheckInDto) _mediator.send(request).data;
   }

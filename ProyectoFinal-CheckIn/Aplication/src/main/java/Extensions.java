@@ -8,6 +8,8 @@ import factories.CheckInFactory;
 import factories.ICheckInFactory;
 import factories.itinerario.IitinerarioFactory;
 import factories.itinerario.ItinerarioFactory;
+import factories.pasajero.IPasajeroFactory;
+import factories.pasajero.PasajeroFactory;
 import Fourteam.extensions.IServiceCollection;
 import Fourteam.mediator.IMediator;
 import Modal.Itinerario;
@@ -23,6 +25,7 @@ public class Extensions {
     IMediator.registerHandler(PublishIntegrationEventWhenCheckInCreadoHandler.class);
     IServiceCollection.AddTransient(ICheckInFactory.class, CheckInFactory.class);
     IServiceCollection.AddTransient(IitinerarioFactory.class, ItinerarioFactory.class);
+    IServiceCollection.AddTransient(IPasajeroFactory.class, PasajeroFactory.class);
     Domain.addDomain();
   }
 }

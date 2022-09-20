@@ -22,7 +22,7 @@ public class GetPasajeroByIdHandler implements RequestHandler<GetPasajeroByIdQue
       if (pasajero == null) {
         return null;
       }
-      pasajeroDto.setKeyVuelo(pasajero.getKey());
+      pasajeroDto.setKeyVuelo(pasajero.getKey().toString());
       pasajeroDto.setNombre(pasajero.getnombre());
       pasajeroDto.setApellido(pasajero.getapellido());
       pasajeroDto.setDni(pasajero.getDni());

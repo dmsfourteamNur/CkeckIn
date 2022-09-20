@@ -14,8 +14,7 @@ public class VueloCreadoConsumer extends IConsumer<IntegrationEvents.VueloCreado
   private IitinerarioFactory iitinerarioFactory;
   private IUnitOfWork _unitOfWork;
 
-  public VueloCreadoConsumer(
-      IitinerarioRepository iitinerarioRepository,
+  public VueloCreadoConsumer(IitinerarioRepository iitinerarioRepository, IitinerarioFactory iitinerarioFactory,
       IUnitOfWork _unitOfWork) {
     this.iitinerarioRepository = iitinerarioRepository;
     this.iitinerarioFactory = iitinerarioFactory;
@@ -25,16 +24,16 @@ public class VueloCreadoConsumer extends IConsumer<IntegrationEvents.VueloCreado
   @Override
   public void Consume(IntegrationEvents.VueloCreado objeto) {
     Itinerario itinerario = iitinerarioFactory.Create(
-        objeto.getNroVuelo(),
+        objeto.getKeyAeronave(),
         objeto.getKeyAeropuertoOrigen(),
         objeto.getKeyAeropuertoDestino(),
         objeto.getFechaArribe(),
         objeto.getFechaSalida());
 
-    // for (var item : objeto.getAsiento()) {
-    // itinerario.AgregarAsientos(item.getKey(), item.getNumero(),
-    // item.getDisponibilidad());
-    // }
+    for (var item : objeto.listaAsientos) {
+      itinerario.AgregarAsientos(item.getKey(), item.getNumero(), item.getDisponibilidad());
+    }
+
     try {
       iitinerarioRepository.Create(itinerario);
       _unitOfWork.commit();
