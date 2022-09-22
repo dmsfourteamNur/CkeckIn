@@ -9,8 +9,8 @@ import java.util.UUID;
 public class ItinerarioDto {
 
   private UUID key;
-  private UUID ciudadOrigen;
-  private UUID ciudadDestino;
+  private String origen;
+  private String destino;
   private Date fechaSalida;
   private Date fechaArribe;
   private List<Asiento> asientos;
@@ -23,20 +23,20 @@ public class ItinerarioDto {
     this.key = key;
   }
 
-  public UUID getCiudadOrigen() {
-    return this.ciudadOrigen;
+  public String getOrigen() {
+    return this.origen;
   }
 
-  public void setCiudadOrigen(UUID ciudadOrigen) {
-    this.ciudadOrigen = ciudadOrigen;
+  public void setOrigen(String origen) {
+    this.origen = origen;
   }
 
-  public UUID getCiudadDestino() {
-    return this.ciudadDestino;
+  public String getDestino() {
+    return this.destino;
   }
 
-  public void setCiudadDestino(UUID ciudadDestino) {
-    this.ciudadDestino = ciudadDestino;
+  public void setDestino(String destino) {
+    this.destino = destino;
   }
 
   public Date getFechaSalida() {

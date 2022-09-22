@@ -8,8 +8,8 @@ import java.util.UUID;
 public interface IitinerarioFactory {
   Itinerario Create(
       UUID key,
-      UUID ciudadOrigen,
-      UUID ciudadDestino,
+      String origen,
+      String destino,
       Date fechaSalida,
       Date fechaArribe);
 }

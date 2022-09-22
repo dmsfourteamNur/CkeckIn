@@ -12,7 +12,7 @@ services:
       - ./mongoDB/:/data/db
   server:
     image: edson/checkin-java
-    build: ./ProyectiFinal-CheckIn
+    build: ./ProyectoFinal-CheckIn
     restart: always
     network_mode: "service:database"
   web:

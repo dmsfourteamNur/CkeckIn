@@ -44,8 +44,8 @@ public class GetVueloByIdHandler
       vueloPersonaDto.setDni(pasajero.getDni());
 
       vueloPersonaDto.setKey(itinerario.getKey());
-      vueloPersonaDto.setCiudadOrigen(itinerario.getCiudadOrigen());
-      vueloPersonaDto.setCiudadDestino(itinerario.getCiudadDestino());
+      vueloPersonaDto.setOrigen(itinerario.getOrigen());
+      vueloPersonaDto.setDestino(itinerario.getDestino());
 
       List<Asiento> lista = new ArrayList<>();
 

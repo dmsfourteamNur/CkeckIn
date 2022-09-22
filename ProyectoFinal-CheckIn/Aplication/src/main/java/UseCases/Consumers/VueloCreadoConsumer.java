@@ -25,8 +25,8 @@ public class VueloCreadoConsumer extends IConsumer<IntegrationEvents.VueloCreado
   public void Consume(IntegrationEvents.VueloCreado objeto) {
     Itinerario itinerario = iitinerarioFactory.Create(
         objeto.getKey(),
-        objeto.getKeyAeropuertoOrigen(),
-        objeto.getKeyAeropuertoDestino(),
+        objeto.getOrigen(),
+        objeto.getDestino(),
         objeto.getFechaArribe(),
         objeto.getFechaSalida());
 

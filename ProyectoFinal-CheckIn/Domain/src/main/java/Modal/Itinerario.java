@@ -8,21 +8,21 @@ import java.util.UUID;
 
 public class Itinerario extends AggregateRoot<UUID> {
 
-  private UUID ciudadOrigen;
-  private UUID ciudadDestino;
+  private String origen;
+  private String destino;
   private Date fechaSalida;
   private Date fechaArribe;
   private List<Asiento> asiento;
 
   public Itinerario(
       UUID keyVuelo,
-      UUID ciudadOrigen,
-      UUID ciudadDestino,
+      String origen,
+      String destino,
       Date fechaSalida,
       Date fechaArribe) {
     this.key = keyVuelo;
-    this.ciudadOrigen = ciudadOrigen;
-    this.ciudadDestino = ciudadDestino;
+    this.origen = origen;
+    this.destino = destino;
     this.fechaArribe = fechaArribe;
     this.fechaSalida = fechaSalida;
     this.asiento = new ArrayList<Asiento>();
@@ -33,20 +33,20 @@ public class Itinerario extends AggregateRoot<UUID> {
     asiento.add(asientos);
   }
 
-  public UUID getCiudadOrigen() {
-    return this.ciudadOrigen;
+  public String getOrigen() {
+    return this.origen;
   }
 
-  public void setCiudadOrigen(UUID ciudadOrigen) {
-    this.ciudadOrigen = ciudadOrigen;
+  public void setOrigen(String origen) {
+    this.origen = origen;
   }
 
-  public UUID getCiudadDestino() {
-    return this.ciudadDestino;
+  public String getDestino() {
+    return this.destino;
   }
 
-  public void setCiudadDestino(UUID ciudadDestino) {
-    this.ciudadDestino = ciudadDestino;
+  public void setDestino(String destino) {
+    this.destino = destino;
   }
 
   public Date getFechaSalida() {
