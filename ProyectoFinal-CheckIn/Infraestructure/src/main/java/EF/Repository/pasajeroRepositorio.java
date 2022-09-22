@@ -1,6 +1,8 @@
 package EF.Repository;
 
 import java.util.List;
+import java.util.UUID;
+
 import EF.Contexts.IWriteDbContext;
 import Fourteam.db.DbSet;
 import Modal.Pasajero;
@@ -15,8 +17,8 @@ public class pasajeroRepositorio implements IpasajeroRepository {
   }
 
   @Override
-  public Pasajero FindByKey(Integer key) throws Exception {
-    return pasajero.Single(obj -> obj.key.equals(key));
+  public Pasajero FindByKey(UUID key) throws Exception {
+    return pasajero.Single(obj -> obj.key.toString().equals(key.toString()));
   }
 
   @Override
@@ -39,6 +41,11 @@ public class pasajeroRepositorio implements IpasajeroRepository {
   public Pasajero Update(Pasajero obj) throws Exception {
     pasajero.Update(obj, (it -> it.key.equals(obj.key)));
     return obj;
+  }
+
+  @Override
+  public Pasajero FindByKeyVenta(UUID keyVenta) throws Exception {
+    return pasajero.Single(obj -> obj.getKeyVenta().toString().equals(keyVenta.toString()));
   }
 
 }

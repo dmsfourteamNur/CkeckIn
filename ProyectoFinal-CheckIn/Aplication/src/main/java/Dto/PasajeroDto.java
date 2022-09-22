@@ -4,25 +4,25 @@ import java.util.UUID;
 
 public class PasajeroDto {
 
-  private UUID key;
-  private String keyVuelo;
+  private UUID keyVenta;
+  private UUID keyVuelo;
   private String nombre;
   private String apellido;
   private int dni;
 
-  public UUID getKey() {
-    return this.key;
+  public UUID getKeyVenta() {
+    return this.keyVenta;
   }
 
-  public void setKey(UUID key) {
-    this.key = key;
+  public void setKeyVenta(UUID keyVenta) {
+    this.keyVenta = keyVenta;
   }
 
-  public String getKeyVuelo() {
+  public UUID getKeyVuelo() {
     return this.keyVuelo;
   }
 
-  public void setKeyVuelo(String keyVuelo) {
+  public void setKeyVuelo(UUID keyVuelo) {
     this.keyVuelo = keyVuelo;
   }
 
@@ -49,4 +49,5 @@ public class PasajeroDto {
   public void setDni(int dni) {
     this.dni = dni;
   }
+
 }

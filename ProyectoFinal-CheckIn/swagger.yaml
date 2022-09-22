@@ -1,0 +1,94 @@
+servers:
+- {url: 'http://localhost:8080/api/'}
+openapi: 3.0.0
+paths:
+  /checkin/registro:
+    post:
+      summary: /checkin register
+      requestBody:
+        content:
+          application/json:
+            schema: {type: object}
+      operationId: /checkin_register
+      responses:
+        '200': {description: Response 200}
+      tags: [/checkin]
+  /checkin/{key}:
+    get:
+      summary: /checkin getByKey
+      operationId: /checkin_getByKey
+      responses:
+        '200': {description: Response 200}
+      parameters:
+      - schema: {type: string}
+        in: path
+        name: key
+        required: true
+      tags: [/checkin]
+    delete:
+      summary: /checkin delete
+      operationId: /checkin_delete
+      responses:
+        '200': {description: Response 200}
+      parameters:
+      - schema: {type: string}
+        in: path
+        name: key
+        required: true
+      tags: [/checkin]
+    put:
+      summary: /checkin edit
+      requestBody:
+        content:
+          application/json:
+            schema: {type: object}
+      operationId: /checkin_edit
+      responses:
+        '200': {description: Response 200}
+      parameters:
+      - schema: {type: string}
+        in: path
+        name: key
+        required: true
+      tags: [/checkin]
+  /checkin/vuelo/{key}:
+    get:
+      summary: /checkin getByKeyVuelo
+      operationId: /checkin_getByKeyVuelo
+      responses:
+        '200': {description: Response 200}
+      parameters:
+      - schema: {type: string}
+        in: path
+        name: key
+        required: true
+      tags: [/checkin]
+  /checkin/:
+    get:
+      summary: /checkin getAll
+      operationId: /checkin_getAll
+      responses:
+        '200': {description: Response 200}
+      tags: [/checkin]
+  /checkin/venta/{key}:
+    get:
+      summary: /checkin getByKeyVenta
+      operationId: /checkin_getByKeyVenta
+      responses:
+        '200': {description: Response 200}
+      parameters:
+      - schema: {type: string}
+        in: path
+        name: key
+        required: true
+      tags: [/checkin]
+  /checkin/venta:
+    get:
+      summary: /checkin getAllVenta
+      operationId: /checkin_getAllVenta
+      responses:
+        '200': {description: Response 200}
+      tags: [/checkin]
+info: {description: FuourTeam API description, title: FourTeam API, version: 1.0.1}
+tags:
+- {name: /checkin, description: /checkin_descripcion}

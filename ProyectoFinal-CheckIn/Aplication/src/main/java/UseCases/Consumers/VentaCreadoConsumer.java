@@ -27,9 +27,9 @@ public class VentaCreadoConsumer extends IConsumer<IntegrationEvents.VentaCreado
 
   @Override
   public void Consume(IntegrationEvents.VentaCreado object) {
-    Pasajero pasajero = iPasajeroFactory.Create(object.getKeyVuelo(), object.getNombre(),
-        object.getApellido(), object.getDni());
     try {
+      Pasajero pasajero = iPasajeroFactory.Create(object.getKeyVuelo(), object.getKey(), object.getNombre(),
+          object.getApellido(), Integer.parseInt(object.getDni()));
       ipasajeroRepository.Create(pasajero);
     } catch (Exception e) {
       e.printStackTrace();

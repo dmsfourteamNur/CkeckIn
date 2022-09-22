@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class GetPasajeroByIdHandler
+public class GetVueloByIdHandler
     implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
 
   private IpasajeroRepository _IpasajeroRepository;
   private IitinerarioRepository _IitinerarioRepository;
 
-  public GetPasajeroByIdHandler(
+  public GetVueloByIdHandler(
       IpasajeroRepository ipasajeroRepository,
       IitinerarioRepository iitinerarioRepository) {
     this._IpasajeroRepository = ipasajeroRepository;
@@ -29,7 +29,7 @@ public class GetPasajeroByIdHandler
   public VueloPersonaDto handle(GetVueloPasajeroQuery request) throws HttpException {
     VueloPersonaDto vueloPersonaDto = new VueloPersonaDto();
     try {
-      Pasajero pasajero = _IpasajeroRepository.FindByKey(request.dni);
+      Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.keyVenta);
       if (pasajero == null) {
         return null;
       }
