@@ -48,4 +48,9 @@ public class pasajeroRepositorio implements IpasajeroRepository {
     return pasajero.Single(obj -> obj.getKeyVenta().toString().equals(keyVenta.toString()));
   }
 
+  @Override
+  public Pasajero FindByKeyPasajero(int ci) throws Exception {
+    return pasajero.Single(obj -> obj.getDni() == ci);
+  }
+
 }

@@ -18,7 +18,8 @@ public class GetPasajeroByIdHandler implements RequestHandler<GetPasajeroByIdQue
   public PasajeroDto handle(GetPasajeroByIdQuery request) throws HttpException {
     PasajeroDto pasajeroDto = new PasajeroDto();
     try {
-      Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.keyVenta);
+      // Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.keyVenta);
+      Pasajero pasajero = _IpasajeroRepository.FindByKeyPasajero(request.dni);
       if (pasajero == null) {
         return null;
       }
