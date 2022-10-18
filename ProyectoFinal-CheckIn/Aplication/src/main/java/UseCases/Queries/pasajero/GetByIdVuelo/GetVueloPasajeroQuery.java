@@ -1,13 +1,15 @@
 package UseCases.Queries.pasajero.GetByIdVuelo;
 
+import java.util.UUID;
+
 import Dto.VueloPersonaDto;
 import Fourteam.mediator.Request;
 
 public class GetVueloPasajeroQuery implements Request<VueloPersonaDto> {
 
-  public int dni;
+  public UUID keyVenta;
 
-  public GetVueloPasajeroQuery(int dni) {
-    this.dni = dni;
+  public GetVueloPasajeroQuery(UUID keyVenta) {
+    this.keyVenta = keyVenta;
   }
 }

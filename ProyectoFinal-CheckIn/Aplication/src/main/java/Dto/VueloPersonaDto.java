@@ -6,8 +6,8 @@ import java.util.UUID;
 public class VueloPersonaDto {
 
   private UUID key;
-  private String ciudadOrigen;
-  private String ciudadDestino;
+  private String origen;
+  private String destino;
   private List<Asiento> asientos;
 
   private UUID keyPasajero;
@@ -24,20 +24,20 @@ public class VueloPersonaDto {
     this.key = key;
   }
 
-  public String getCiudadOrigen() {
-    return this.ciudadOrigen;
+  public String getOrigen() {
+    return this.origen;
   }
 
-  public void setCiudadOrigen(String ciudadOrigen) {
-    this.ciudadOrigen = ciudadOrigen;
+  public void setOrigen(String origen) {
+    this.origen = origen;
   }
 
-  public String getCiudadDestino() {
-    return this.ciudadDestino;
+  public String getDestino() {
+    return this.destino;
   }
 
-  public void setCiudadDestino(String ciudadDestino) {
-    this.ciudadDestino = ciudadDestino;
+  public void setDestino(String destino) {
+    this.destino = destino;
   }
 
   public List<Asiento> getAsientos() {
@@ -87,4 +87,5 @@ public class VueloPersonaDto {
   public void setDni(int dni) {
     this.dni = dni;
   }
+
 }

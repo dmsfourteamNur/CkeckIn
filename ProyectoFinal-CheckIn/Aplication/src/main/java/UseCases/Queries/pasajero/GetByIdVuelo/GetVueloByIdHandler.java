@@ -10,17 +10,17 @@ import Fourteam.http.Exception.HttpException;
 import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class GetPasajeroByIdHandler
-  implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
+public class GetVueloByIdHandler
+    implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
 
   private IpasajeroRepository _IpasajeroRepository;
   private IitinerarioRepository _IitinerarioRepository;
 
-  public GetPasajeroByIdHandler(
-    IpasajeroRepository ipasajeroRepository,
-    IitinerarioRepository iitinerarioRepository
-  ) {
+  public GetVueloByIdHandler(
+      IpasajeroRepository ipasajeroRepository,
+      IitinerarioRepository iitinerarioRepository) {
     this._IpasajeroRepository = ipasajeroRepository;
     this._IitinerarioRepository = iitinerarioRepository;
   }
@@ -29,23 +29,23 @@ public class GetPasajeroByIdHandler
   public VueloPersonaDto handle(GetVueloPasajeroQuery request) throws HttpException {
     VueloPersonaDto vueloPersonaDto = new VueloPersonaDto();
     try {
-      Pasajero pasajero = _IpasajeroRepository.FindByKey(request.dni);
+      Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.keyVenta);
       if (pasajero == null) {
         return null;
       }
-      Itinerario itinerario = _IitinerarioRepository.FindByKey(pasajero.getKeyVuelo());
+      Itinerario itinerario = _IitinerarioRepository.FindByKey(pasajero.getKey());
       if (itinerario == null) {
         return null;
       }
       vueloPersonaDto.setKeyPasajero(pasajero.getKey());
-      vueloPersonaDto.setKeyVuelo(pasajero.getKeyVuelo());
+      vueloPersonaDto.setKeyVuelo(pasajero.getKey());
       vueloPersonaDto.setNombre(pasajero.getNombre());
       vueloPersonaDto.setApellido(pasajero.getApellido());
       vueloPersonaDto.setDni(pasajero.getDni());
 
       vueloPersonaDto.setKey(itinerario.getKey());
-      vueloPersonaDto.setCiudadOrigen(itinerario.getCiudadOrigen());
-      vueloPersonaDto.setCiudadDestino(itinerario.getCiudadDestino());
+      vueloPersonaDto.setOrigen(itinerario.getOrigen());
+      vueloPersonaDto.setDestino(itinerario.getDestino());
 
       List<Asiento> lista = new ArrayList<>();
 

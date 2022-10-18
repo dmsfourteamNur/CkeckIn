@@ -1,11 +1,16 @@
 package Controllers;
 
 import Dto.CheckInDto;
+import Dto.PasajeroDto;
+import Dto.VueloPersonaDto;
 import UseCases.Command.CheckIn.Create.CrearCheckInCommand;
 import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 import UseCases.Command.CheckIn.Edit.EditCheckInCommand;
 import UseCases.Queries.GetAll.GetCheckInAllQuery;
+import UseCases.Queries.GetAllVenta.GetpasajeroAllQuery;
 import UseCases.Queries.GetById.GetCheckInByIdQuery;
+import UseCases.Queries.pasajero.GetById.GetPasajeroByIdQuery;
+import UseCases.Queries.pasajero.GetByIdVuelo.GetVueloPasajeroQuery;
 import Fourteam.http.annotation.*;
 import Fourteam.mediator.Mediator;
 import java.util.List;
@@ -26,6 +31,16 @@ public class CheckInController {
     return (CheckInDto) _mediator.send(request).data;
   }
 
+  @GetMapping("/venta/{key}")
+  public PasajeroDto getByKeyVenta(@PathVariable GetPasajeroByIdQuery request) throws Exception {
+    return (PasajeroDto) _mediator.send(request).data;
+  }
+
+  @GetMapping("/vuelo/{key}")
+  public VueloPersonaDto getByKeyVuelo(@PathVariable GetVueloPasajeroQuery request) throws Exception {
+    return (VueloPersonaDto) _mediator.send(request).data;
+  }
+
   @PostMapping("/registro")
   public UUID register(@RequestBody CrearCheckInCommand checkInCommand) throws Exception {
     return (UUID) _mediator.send(checkInCommand).data;
@@ -36,11 +51,15 @@ public class CheckInController {
     return (List<CheckInDto>) _mediator.send(new GetCheckInAllQuery()).data;
   }
 
+  @GetMapping("/venta")
+  public List<PasajeroDto> getAllVenta() throws Exception {
+    return (List<PasajeroDto>) _mediator.send(new GetpasajeroAllQuery()).data;
+  }
+
   @PutMapping("/{key}")
   public CheckInDto edit(
-    @RequestBody CheckInDto checkInDto,
-    @PathVariable EditCheckInCommand request
-  ) throws Exception {
+      @RequestBody CheckInDto checkInDto,
+      @PathVariable EditCheckInCommand request) throws Exception {
     request.checkInDto.CodigoSeguridad = checkInDto.CodigoSeguridad;
     return (CheckInDto) _mediator.send(request).data;
   }

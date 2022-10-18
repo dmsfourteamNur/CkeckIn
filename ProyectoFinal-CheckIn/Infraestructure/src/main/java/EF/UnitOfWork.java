@@ -23,19 +23,25 @@ public class UnitOfWork implements IUnitOfWork {
   public void commit() throws Exception {
     List<Object> events = _context.getDomainEvents();
     for (Object domainEvent : events) {
-      DomainEvent event = (DomainEvent) domainEvent;
-      _mediator.notify(event);
+      try {
+        DomainEvent event = (DomainEvent) domainEvent;
+        _mediator.notify(event);
+      } catch (Exception e) {
+      }
+
     }
     try {
       _context.Commit();
     } catch (DataBaseException e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
 
     for (Object domainEvent : events) {
-      DomainEvent event = (DomainEvent) domainEvent;
-      _mediator.notify(MakeGeneryc(event));
+      try {
+        DomainEvent event = (DomainEvent) domainEvent;
+        _mediator.notify(MakeGeneryc(event));
+      } catch (Exception e) {
+      }
     }
   }
 

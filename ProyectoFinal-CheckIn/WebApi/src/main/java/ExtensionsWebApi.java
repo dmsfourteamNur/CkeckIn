@@ -7,6 +7,6 @@ public class ExtensionsWebApi {
   public static void AddControllers() {
     Rest.addController(CheckInController.class);
     Rest.start(Integer.parseInt(Config.getProperty("http.port")));
-    // Rest.createSwagger();
+    Rest.createSwagger();
   }
 }

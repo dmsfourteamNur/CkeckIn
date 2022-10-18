@@ -18,13 +18,14 @@ public class GetPasajeroByIdHandler implements RequestHandler<GetPasajeroByIdQue
   public PasajeroDto handle(GetPasajeroByIdQuery request) throws HttpException {
     PasajeroDto pasajeroDto = new PasajeroDto();
     try {
-      Pasajero pasajero = _IpasajeroRepository.FindByKey(request.Dni);
+      Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.keyVenta);
       if (pasajero == null) {
         return null;
       }
-      pasajeroDto.setKeyVuelo(pasajero.getKey());
-      pasajeroDto.setNombre(pasajero.getnombre());
-      pasajeroDto.setApellido(pasajero.getapellido());
+      pasajeroDto.setKeyVenta(pasajero.getKey());
+      pasajeroDto.setKeyVuelo(pasajero.getKeyVenta());
+      pasajeroDto.setNombre(pasajero.getNombre());
+      pasajeroDto.setApellido(pasajero.getApellido());
       pasajeroDto.setDni(pasajero.getDni());
     } catch (Exception e) {
       System.out.println(e);

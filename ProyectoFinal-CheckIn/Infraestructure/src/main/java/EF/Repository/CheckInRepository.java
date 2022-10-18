@@ -41,4 +41,5 @@ public class CheckInRepository implements IcheckInRepository {
     _checkIn.Update(obj, (it -> it.key.equals(obj.key)));
     return obj;
   }
+
 }

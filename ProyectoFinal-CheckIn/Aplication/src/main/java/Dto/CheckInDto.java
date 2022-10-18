@@ -13,10 +13,19 @@ public class CheckInDto {
   public String Descripcion;
   public int NumeroAsiento;
   public UUID KeyVuelo;
-  public UUID KeyPasajero;
+  public UUID KeyAsiento;
   public List<EquipajeDto> EquipajeDto;
 
-  public CheckInDto() {}
+  public CheckInDto() {
+  }
+
+  public void setKeyAsiento(UUID keyAsiento) {
+    KeyAsiento = keyAsiento;
+  }
+
+  public UUID getKeyAsiento() {
+    return KeyAsiento;
+  }
 
   public UUID getKey() {
     return this.Key;
@@ -76,14 +85,6 @@ public class CheckInDto {
 
   public void setKeyVuelo(UUID KeyVuelo) {
     this.KeyVuelo = KeyVuelo;
-  }
-
-  public UUID getKeyPasajero() {
-    return this.KeyPasajero;
-  }
-
-  public void setKeyPasajero(UUID KeyPasajero) {
-    this.KeyPasajero = KeyPasajero;
   }
 
   public List<EquipajeDto> getEquipajeDto() {

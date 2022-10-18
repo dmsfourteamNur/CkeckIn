@@ -1,11 +1,16 @@
 import EF.Contexts.IWriteDbContext;
 import EF.Contexts.MongoDB.*;
 import EF.Repository.CheckInRepository;
+import EF.Repository.ItinerarioRepository;
+import EF.Repository.pasajeroRepositorio;
 import EF.UnitOfWork;
 import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
+import Repositories.IitinerarioRepository;
+import Repositories.IpasajeroRepository;
 import UseCases.Consumers.VentaCreadoConsumer;
 import UseCases.Consumers.VueloCreadoConsumer;
+import factories.itinerario.IitinerarioFactory;
 import Fourteam.config.Config;
 import Fourteam.extensions.IServiceCollection;
 
@@ -16,6 +21,8 @@ public class ExtensionsInfrastructure {
     IServiceCollection.AddScoped(IWriteDbContext.class, WriteDbContext.class);
     IServiceCollection.AddScoped(IUnitOfWork.class, UnitOfWork.class);
     IServiceCollection.AddScoped(IcheckInRepository.class, CheckInRepository.class);
+    IServiceCollection.AddScoped(IitinerarioRepository.class, ItinerarioRepository.class);
+    IServiceCollection.AddScoped(IpasajeroRepository.class, pasajeroRepositorio.class);
     Extensions.AddApplication();
     AddRabbitMq();
   }

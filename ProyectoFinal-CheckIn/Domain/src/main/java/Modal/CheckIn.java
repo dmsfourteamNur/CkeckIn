@@ -16,27 +16,33 @@ public class CheckIn extends AggregateRoot<UUID> {
   public int NumeroAsiento;
   public List<Equipaje> equipaje;
   public UUID KeyVuelo;
-  public UUID KeyPasajero;
+  public UUID KeyAsiento;
 
-  public CheckIn() {}
+  public CheckIn() {
+  }
 
   public CheckIn(
-    String codigoSeguridad,
-    Boolean estadoPaciente,
-    String descripcion,
-    int numeroAsiento,
-    UUID keyVuelo,
-    UUID keyPasajero
-  ) {
+      String codigoSeguridad,
+      Boolean estadoPaciente,
+      String descripcion,
+      int numeroAsiento,
+      UUID keyVuelo,
+      UUID KeyAsiento) {
     key = UUID.randomUUID();
-    CodigoSeguridad = codigoSeguridad;
-    EstadoPaciente = estadoPaciente;
-    Descripcion = descripcion;
-    NumeroAsiento = numeroAsiento;
-    KeyVuelo = keyVuelo;
-    KeyPasajero = keyPasajero;
+    this.CodigoSeguridad = codigoSeguridad;
+    this.EstadoPaciente = estadoPaciente;
+    this.Descripcion = descripcion;
+    this.NumeroAsiento = numeroAsiento;
+    this.KeyVuelo = keyVuelo;
+    this.KeyAsiento = KeyAsiento;
     equipaje = new ArrayList<Equipaje>();
   }
+
+  // public void AgregarAgregarAsiento(int numeroAsiento) {
+
+  // Equipaje equipajes = new Equipaje(PesoEquipaje, NumeroEtiqueta, descripcion);
+  // equipaje.add(equipajes);
+  // }
 
   public void AgregarItem(Double PesoEquipaje, String NumeroEtiqueta, String descripcion) {
     Equipaje equipajes = new Equipaje(PesoEquipaje, NumeroEtiqueta, descripcion);
@@ -46,6 +52,14 @@ public class CheckIn extends AggregateRoot<UUID> {
   public void checkInCompletado() {
     var event = new CheckInCreado(key, CodigoSeguridad);
     addDomainEvent(event);
+  }
+
+  public void setKeyAsiento(UUID keyAsiento) {
+    KeyAsiento = keyAsiento;
+  }
+
+  public UUID getKeyAsiento() {
+    return KeyAsiento;
   }
 
   public Boolean isEstadoPaciente() {
@@ -66,14 +80,6 @@ public class CheckIn extends AggregateRoot<UUID> {
 
   public void setKeyVuelo(UUID KeyVuelo) {
     this.KeyVuelo = KeyVuelo;
-  }
-
-  public UUID getKeyPasajero() {
-    return this.KeyPasajero;
-  }
-
-  public void setKeyPasajero(UUID KeyPasajero) {
-    this.KeyPasajero = KeyPasajero;
   }
 
   public List<Equipaje> getEquipaje() {

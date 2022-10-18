@@ -28,7 +28,6 @@ public class GetCheckInByIdHandler implements RequestHandler<GetCheckInByIdQuery
       checkInDto.setDescripcion(checkIn.getDescripcion());
       checkInDto.setNumeroAsiento(checkIn.getAsiento());
       checkInDto.setKeyVuelo(checkIn.getKeyVuelo());
-      checkInDto.setKeyPasajero(checkIn.getKeyPasajero());
       List<EquipajeDto> lista = new ArrayList<>();
       for (var item : checkIn.getEquipaje()) {
         EquipajeDto equipajeDto = new EquipajeDto();
