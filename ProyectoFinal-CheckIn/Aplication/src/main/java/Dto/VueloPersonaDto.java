@@ -1,27 +1,45 @@
 package Dto;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 public class VueloPersonaDto {
 
-  private UUID key;
+  private UUID keyVenta;
+  private int dni;
+  private UUID keyVuelo;
+  private String nombre;
+  private String apellido;
+
+  private Date fechaSalida;
+  private Date fechaArribe;
   private String origen;
   private String destino;
   private List<Asiento> asientos;
 
-  private UUID keyPasajero;
-  private UUID keyVuelo;
-  private String nombre;
-  private String apellido;
-  private int dni;
-
-  public UUID getKey() {
-    return this.key;
+  public UUID getKeyVenta() {
+    return this.keyVenta;
   }
 
-  public void setKey(UUID key) {
-    this.key = key;
+  public void setKeyVenta(UUID keyVenta) {
+    this.keyVenta = keyVenta;
+  }
+
+  public Date getFechaSalida() {
+    return this.fechaSalida;
+  }
+
+  public void setFechaSalida(Date fechaSalida) {
+    this.fechaSalida = fechaSalida;
+  }
+
+  public Date getFechaArribe() {
+    return this.fechaArribe;
+  }
+
+  public void setFechaArribe(Date fechaArribe) {
+    this.fechaArribe = fechaArribe;
   }
 
   public String getOrigen() {
@@ -46,14 +64,6 @@ public class VueloPersonaDto {
 
   public void setAsientos(List<Asiento> asientos) {
     this.asientos = asientos;
-  }
-
-  public UUID getKeyPasajero() {
-    return this.keyPasajero;
-  }
-
-  public void setKeyPasajero(UUID keyPasajero) {
-    this.keyPasajero = keyPasajero;
   }
 
   public UUID getKeyVuelo() {

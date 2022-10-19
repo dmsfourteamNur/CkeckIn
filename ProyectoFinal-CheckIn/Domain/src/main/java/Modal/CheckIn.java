@@ -17,6 +17,7 @@ public class CheckIn extends AggregateRoot<UUID> {
   public List<Equipaje> equipaje;
   public UUID KeyVuelo;
   public UUID KeyAsiento;
+  public UUID KeyVenta;
 
   public CheckIn() {
   }
@@ -27,7 +28,8 @@ public class CheckIn extends AggregateRoot<UUID> {
       String descripcion,
       int numeroAsiento,
       UUID keyVuelo,
-      UUID KeyAsiento) {
+      UUID KeyAsiento,
+      UUID keyVenta) {
     key = UUID.randomUUID();
     this.CodigoSeguridad = codigoSeguridad;
     this.EstadoPaciente = estadoPaciente;
@@ -35,6 +37,7 @@ public class CheckIn extends AggregateRoot<UUID> {
     this.NumeroAsiento = numeroAsiento;
     this.KeyVuelo = keyVuelo;
     this.KeyAsiento = KeyAsiento;
+    this.KeyVenta = keyVenta;
     equipaje = new ArrayList<Equipaje>();
   }
 
@@ -52,6 +55,14 @@ public class CheckIn extends AggregateRoot<UUID> {
   public void checkInCompletado() {
     var event = new CheckInCreado(key, CodigoSeguridad);
     addDomainEvent(event);
+  }
+
+  public UUID getKeyVenta() {
+    return this.KeyVenta;
+  }
+
+  public void setKeyVenta(UUID KeyVenta) {
+    this.KeyVenta = KeyVenta;
   }
 
   public void setKeyAsiento(UUID keyAsiento) {

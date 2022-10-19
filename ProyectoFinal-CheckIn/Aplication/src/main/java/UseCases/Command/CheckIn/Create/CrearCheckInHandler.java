@@ -3,9 +3,11 @@ package UseCases.Command.CheckIn.Create;
 import Modal.Asiento;
 import Modal.CheckIn;
 import Modal.Itinerario;
+import Modal.Pasajero;
 import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
 import Repositories.IitinerarioRepository;
+import Repositories.IpasajeroRepository;
 import Services.CheckInServices;
 import core.IRepository;
 import factories.ICheckInFactory;
@@ -25,21 +27,33 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
   private IUnitOfWork _unitOfWork;
   private IcheckInRepository _checkInRepository;
   private IitinerarioRepository _IitinerarioRepository;
+  private IpasajeroRepository _IpasajeroRepository;
 
   public CrearCheckInHandler(IcheckInRepository CheckInRepository, ICheckInFactory CheckInFactory,
       CheckInServices inService, IUnitOfWork _unitOfWork, IcheckInRepository _checkInRepository,
-      IitinerarioRepository _IitinerarioRepository) {
+      IitinerarioRepository _IitinerarioRepository, IpasajeroRepository ipasajeroRepository) {
     this.CheckInRepository = CheckInRepository;
     this.CheckInFactory = CheckInFactory;
     this.inService = inService;
     this._unitOfWork = _unitOfWork;
     this._checkInRepository = _checkInRepository;
     this._IitinerarioRepository = _IitinerarioRepository;
+    this._IpasajeroRepository = ipasajeroRepository;
   }
 
   @Override
   public UUID handle(CrearCheckInCommand request) throws Exception {
     String nroCheckIn = inService.GenerarNroPedidoAsync();
+
+    Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.checkInDto.KeyVenta);
+    if (pasajero == null) {
+      throw new HttpException(HttpStatus.BAD_REQUEST, "LA VENTA NO EXISTE");
+    }
+
+    Pasajero pasajeroVuelo = _IpasajeroRepository.FindByKeyVuelo(request.checkInDto.KeyVuelo);
+    if (pasajeroVuelo == null) {
+      throw new HttpException(HttpStatus.BAD_REQUEST, "EL PASAJERO NO ESTA ASIGNADO A ESTE VUELO");
+    }
 
     Itinerario itinerario = _IitinerarioRepository.FindByKey(request.checkInDto.getKeyVuelo());
     if (itinerario == null) {
@@ -66,7 +80,8 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
         request.checkInDto.getDescripcion(),
         request.checkInDto.getNumeroAsiento(),
         request.checkInDto.getKeyVuelo(),
-        request.checkInDto.getKeyAsiento());
+        request.checkInDto.getKeyAsiento(),
+        request.checkInDto.getKeyVenta());
     for (var item : request.checkInDto.EquipajeDto) {
       objCheckIn.AgregarItem(
           item.getPesoEquipaje(),

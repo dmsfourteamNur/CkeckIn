@@ -10,5 +10,6 @@ public interface ICheckInFactory {
       String descripcion,
       int asiento,
       UUID keyVuelo,
-      UUID keyAsiento);
+      UUID keyAsiento,
+      UUID keyVenta);
 }

@@ -16,7 +16,6 @@ public class GetpasajeroAllHandler implements RequestHandler<GetpasajeroAllQuery
 
   @Override
   public List<Pasajero> handle(GetpasajeroAllQuery request) throws Exception {
-    // TODO Auto-generated method stub
     return _IpasajeroRepository.GetAll();
   }
 

@@ -7,9 +7,9 @@ import Fourteam.mediator.Request;
 
 public class GetVueloPasajeroQuery implements Request<VueloPersonaDto> {
 
-  public UUID keyVenta;
+  public int dni;
 
-  public GetVueloPasajeroQuery(UUID keyVenta) {
-    this.keyVenta = keyVenta;
+  public GetVueloPasajeroQuery(int dni) {
+    this.dni = dni;
   }
 }

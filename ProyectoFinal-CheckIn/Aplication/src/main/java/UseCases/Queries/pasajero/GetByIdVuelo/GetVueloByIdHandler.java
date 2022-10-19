@@ -6,11 +6,11 @@ import Modal.Itinerario;
 import Modal.Pasajero;
 import Repositories.IitinerarioRepository;
 import Repositories.IpasajeroRepository;
+import Fourteam.http.HttpStatus;
 import Fourteam.http.Exception.HttpException;
 import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class GetVueloByIdHandler
     implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
@@ -29,23 +29,23 @@ public class GetVueloByIdHandler
   public VueloPersonaDto handle(GetVueloPasajeroQuery request) throws HttpException {
     VueloPersonaDto vueloPersonaDto = new VueloPersonaDto();
     try {
-      Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.keyVenta);
+      Pasajero pasajero = _IpasajeroRepository.FindByKeyPasajero(request.dni);
       if (pasajero == null) {
-        return null;
+        throw new HttpException(HttpStatus.BAD_REQUEST, "NO EXISTE EL PASAJERO");
       }
       Itinerario itinerario = _IitinerarioRepository.FindByKey(pasajero.getKey());
       if (itinerario == null) {
-        return null;
+        throw new HttpException(HttpStatus.BAD_REQUEST, "EL PASAJERO NO TIENE ASIGNADO NINGUN VUELO");
       }
-      vueloPersonaDto.setKeyPasajero(pasajero.getKey());
+      vueloPersonaDto.setKeyVenta(pasajero.getKey());
       vueloPersonaDto.setKeyVuelo(pasajero.getKey());
       vueloPersonaDto.setNombre(pasajero.getNombre());
       vueloPersonaDto.setApellido(pasajero.getApellido());
       vueloPersonaDto.setDni(pasajero.getDni());
-
-      vueloPersonaDto.setKey(itinerario.getKey());
       vueloPersonaDto.setOrigen(itinerario.getOrigen());
       vueloPersonaDto.setDestino(itinerario.getDestino());
+      vueloPersonaDto.setFechaSalida(itinerario.getFechaSalida());
+      vueloPersonaDto.setFechaArribe(itinerario.getFechaArribe());
 
       List<Asiento> lista = new ArrayList<>();
 

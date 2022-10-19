@@ -15,4 +15,6 @@ public interface IpasajeroRepository extends IRepository<Pasajero, UUID> {
   public Pasajero FindByKeyVenta(UUID keyVenta) throws Exception;
 
   public Pasajero FindByKeyPasajero(int ci) throws Exception;
+
+  public Pasajero FindByKeyVuelo(UUID keyVuelo) throws Exception;
 }

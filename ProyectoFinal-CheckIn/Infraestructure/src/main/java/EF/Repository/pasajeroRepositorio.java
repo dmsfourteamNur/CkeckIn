@@ -53,4 +53,9 @@ public class pasajeroRepositorio implements IpasajeroRepository {
     return pasajero.Single(obj -> obj.getDni() == ci);
   }
 
+  @Override
+  public Pasajero FindByKeyVuelo(UUID keyVuelo) throws Exception {
+    return pasajero.Single(obj -> obj.getKey().toString().equals(keyVuelo.toString()));
+  }
+
 }

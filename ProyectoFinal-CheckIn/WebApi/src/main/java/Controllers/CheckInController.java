@@ -1,6 +1,7 @@
 package Controllers;
 
 import Dto.CheckInDto;
+import Dto.ItinerarioDto;
 import Dto.PasajeroDto;
 import Dto.VueloPersonaDto;
 import UseCases.Command.CheckIn.Create.CrearCheckInCommand;
@@ -8,6 +9,7 @@ import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 import UseCases.Command.CheckIn.Edit.EditCheckInCommand;
 import UseCases.Queries.GetAll.GetCheckInAllQuery;
 import UseCases.Queries.GetAllVenta.GetpasajeroAllQuery;
+import UseCases.Queries.GetAllVuelo.GetAllVueloQuery;
 import UseCases.Queries.GetById.GetCheckInByIdQuery;
 import UseCases.Queries.pasajero.GetById.GetPasajeroByIdQuery;
 import UseCases.Queries.pasajero.GetByIdVuelo.GetVueloPasajeroQuery;
@@ -26,10 +28,10 @@ public class CheckInController {
     this._mediator = mediator;
   }
 
-  @GetMapping("/{key}")
-  public CheckInDto getByKey(@PathVariable GetCheckInByIdQuery request) throws Exception {
-    return (CheckInDto) _mediator.send(request).data;
-  }
+  // @GetMapping("/{key}")
+  // public CheckInDto getByKey(@PathVariable GetCheckInByIdQuery request) throws Exception {
+  //   return (CheckInDto) _mediator.send(request).data;
+  // }
 
   @GetMapping("/venta/{key}")
   public PasajeroDto getByKeyVenta(@PathVariable GetPasajeroByIdQuery request) throws Exception {
@@ -51,9 +53,14 @@ public class CheckInController {
     return (List<CheckInDto>) _mediator.send(new GetCheckInAllQuery()).data;
   }
 
-  @GetMapping("/venta")
+  @GetMapping("/ventas")
   public List<PasajeroDto> getAllVenta() throws Exception {
     return (List<PasajeroDto>) _mediator.send(new GetpasajeroAllQuery()).data;
+  }
+
+  @GetMapping("/vuelos")
+  public List<ItinerarioDto> getAllVuelo() throws Exception {
+    return (List<ItinerarioDto>) _mediator.send(new GetAllVueloQuery()).data;
   }
 
   @PutMapping("/{key}")

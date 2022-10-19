@@ -3,6 +3,8 @@ import UseCases.Command.CheckIn.Delete.DeleteCheckInHandler;
 import UseCases.Command.CheckIn.Edit.EditCheckInHandler;
 import UseCases.DomainEventHandler.PublishIntegrationEventWhenCheckInCreadoHandler;
 import UseCases.Queries.GetAll.GetCheckInAllHandler;
+import UseCases.Queries.GetAllVenta.GetpasajeroAllHandler;
+import UseCases.Queries.GetAllVuelo.GetAllVueloHandler;
 import UseCases.Queries.GetById.GetCheckInByIdHandler;
 import UseCases.Queries.pasajero.GetById.GetPasajeroByIdHandler;
 import UseCases.Queries.pasajero.GetByIdVuelo.GetVueloByIdHandler;
@@ -26,6 +28,8 @@ public class Extensions {
     IMediator.registerHandler(GetCheckInAllHandler.class);
     IMediator.registerHandler(GetPasajeroByIdHandler.class);
     IMediator.registerHandler(GetVueloByIdHandler.class);
+    IMediator.registerHandler(GetAllVueloHandler.class);
+    IMediator.registerHandler(GetpasajeroAllHandler.class);
     IMediator.registerHandler(PublishIntegrationEventWhenCheckInCreadoHandler.class);
     IServiceCollection.AddTransient(ICheckInFactory.class, CheckInFactory.class);
     IServiceCollection.AddTransient(IitinerarioFactory.class, ItinerarioFactory.class);

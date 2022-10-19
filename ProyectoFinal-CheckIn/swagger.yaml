@@ -2,6 +2,13 @@ servers:
 - {url: 'http://localhost:8080/api/'}
 openapi: 3.0.0
 paths:
+  /checkin/ventas:
+    get:
+      summary: /checkin getAllVenta
+      operationId: /checkin_getAllVenta
+      responses:
+        '200': {description: Response 200}
+      tags: [/checkin]
   /checkin/registro:
     post:
       summary: /checkin register
@@ -14,17 +21,6 @@ paths:
         '200': {description: Response 200}
       tags: [/checkin]
   /checkin/{key}:
-    get:
-      summary: /checkin getByKey
-      operationId: /checkin_getByKey
-      responses:
-        '200': {description: Response 200}
-      parameters:
-      - schema: {type: string}
-        in: path
-        name: key
-        required: true
-      tags: [/checkin]
     delete:
       summary: /checkin delete
       operationId: /checkin_delete
@@ -82,10 +78,10 @@ paths:
         name: key
         required: true
       tags: [/checkin]
-  /checkin/venta:
+  /checkin/vuelos:
     get:
-      summary: /checkin getAllVenta
-      operationId: /checkin_getAllVenta
+      summary: /checkin getAllVuelo
+      operationId: /checkin_getAllVuelo
       responses:
         '200': {description: Response 200}
       tags: [/checkin]

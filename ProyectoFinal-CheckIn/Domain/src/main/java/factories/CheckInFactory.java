@@ -12,7 +12,8 @@ public class CheckInFactory implements ICheckInFactory {
       String descripcion,
       int numeroAsiento,
       UUID keyVuelo,
-      UUID keyAsiento) {
-    return new CheckIn(codigoSeguridad, estadoPaciente, descripcion, numeroAsiento, keyVuelo, keyAsiento);
+      UUID keyAsiento,
+      UUID keyVenta) {
+    return new CheckIn(codigoSeguridad, estadoPaciente, descripcion, numeroAsiento, keyVuelo, keyAsiento, keyVenta);
   }
 }
