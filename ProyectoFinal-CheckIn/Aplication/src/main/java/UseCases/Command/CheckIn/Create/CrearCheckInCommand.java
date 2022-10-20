@@ -7,7 +7,6 @@ import java.util.UUID;
 public class CrearCheckInCommand implements Request<UUID> {
 
   public CheckInDto checkInDto;
-  public String sdsd = 1323;
 
   public CrearCheckInCommand(CheckInDto obj) {
     checkInDto = obj;
