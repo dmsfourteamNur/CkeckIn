@@ -1,13 +1,13 @@
 package EF.Contexts;
 
-import Modal.CheckIn;
-import Modal.Equipaje;
-import Modal.Itinerario;
-import Modal.Pasajero;
 import Dto.Asiento;
 import Fourteam.db.DbContext;
 import Fourteam.db.DbSet;
 import Fourteam.db.Exception.DataBaseException;
+import Modal.CheckIn;
+import Modal.Equipaje;
+import Modal.Itinerario;
+import Modal.Pasajero;
 
 public abstract class IWriteDbContext extends DbContext {
 

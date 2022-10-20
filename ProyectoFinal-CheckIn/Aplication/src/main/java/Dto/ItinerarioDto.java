@@ -1,7 +1,6 @@
 package Dto;
 
 import Modal.Asiento;
-
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -62,5 +61,4 @@ public class ItinerarioDto {
   public void setAsientos(List<Asiento> asientos) {
     this.asientos = asientos;
   }
-
 }

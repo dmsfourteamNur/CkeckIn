@@ -1,3 +1,6 @@
+import Fourteam.extensions.IServiceCollection;
+import Fourteam.mediator.IMediator;
+import Modal.Itinerario;
 import UseCases.Command.CheckIn.Create.CrearCheckInHandler;
 import UseCases.Command.CheckIn.Delete.DeleteCheckInHandler;
 import UseCases.Command.CheckIn.Edit.EditCheckInHandler;
@@ -14,9 +17,6 @@ import factories.itinerario.IitinerarioFactory;
 import factories.itinerario.ItinerarioFactory;
 import factories.pasajero.IPasajeroFactory;
 import factories.pasajero.PasajeroFactory;
-import Fourteam.extensions.IServiceCollection;
-import Fourteam.mediator.IMediator;
-import Modal.Itinerario;
 
 public class Extensions {
 

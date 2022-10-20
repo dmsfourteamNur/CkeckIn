@@ -1,10 +1,9 @@
 package UseCases.Queries.GetAllVuelo;
 
-import java.util.List;
-
 import Fourteam.mediator.RequestHandler;
 import Modal.Itinerario;
 import Repositories.IitinerarioRepository;
+import java.util.List;
 
 public class GetAllVueloHandler implements RequestHandler<GetAllVueloQuery, List<Itinerario>> {
 
@@ -18,5 +17,4 @@ public class GetAllVueloHandler implements RequestHandler<GetAllVueloQuery, List
   public List<Itinerario> handle(GetAllVueloQuery request) throws Exception {
     return iitinerarioRepository.GetAll();
   }
-
 }

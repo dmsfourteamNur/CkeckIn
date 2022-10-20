@@ -1,8 +1,8 @@
 package UseCases.Queries.GetAll;
 
+import Fourteam.mediator.RequestHandler;
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
-import Fourteam.mediator.RequestHandler;
 import java.util.List;
 
 public class GetCheckInAllHandler implements RequestHandler<GetCheckInAllQuery, List<CheckIn>> {

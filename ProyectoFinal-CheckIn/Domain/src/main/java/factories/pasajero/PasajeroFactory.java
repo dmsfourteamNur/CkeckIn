@@ -1,7 +1,6 @@
 package factories.pasajero;
 
 import Modal.Pasajero;
-
 import java.util.UUID;
 
 public class PasajeroFactory implements IPasajeroFactory {

@@ -2,26 +2,26 @@ package UseCases.Queries.pasajero.GetByIdVuelo;
 
 import Dto.Asiento;
 import Dto.VueloPersonaDto;
+import Fourteam.http.Exception.HttpException;
+import Fourteam.http.HttpStatus;
+import Fourteam.mediator.RequestHandler;
 import Modal.Itinerario;
 import Modal.Pasajero;
 import Repositories.IitinerarioRepository;
 import Repositories.IpasajeroRepository;
-import Fourteam.http.HttpStatus;
-import Fourteam.http.Exception.HttpException;
-import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetVueloByIdHandler
-    implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
+public class GetVueloByIdHandler implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
 
   private IpasajeroRepository _IpasajeroRepository;
 
   private IitinerarioRepository _IitinerarioRepository;
 
   public GetVueloByIdHandler(
-      IpasajeroRepository ipasajeroRepository,
-      IitinerarioRepository iitinerarioRepository) {
+    IpasajeroRepository ipasajeroRepository,
+    IitinerarioRepository iitinerarioRepository
+  ) {
     this._IpasajeroRepository = ipasajeroRepository;
     this._IitinerarioRepository = iitinerarioRepository;
   }
@@ -36,7 +36,10 @@ public class GetVueloByIdHandler
       }
       Itinerario itinerario = _IitinerarioRepository.FindByKey(pasajero.getKey());
       if (itinerario == null) {
-        throw new HttpException(HttpStatus.BAD_REQUEST, "EL PASAJERO NO TIENE ASIGNADO NINGUN VUELO");
+        throw new HttpException(
+          HttpStatus.BAD_REQUEST,
+          "EL PASAJERO NO TIENE ASIGNADO NINGUN VUELO"
+        );
       }
       vueloPersonaDto.setKeyVenta(pasajero.getKey());
       vueloPersonaDto.setKeyVuelo(pasajero.getKey());

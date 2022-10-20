@@ -49,5 +49,4 @@ public class PasajeroDto {
   public void setDni(int dni) {
     this.dni = dni;
   }
-
 }

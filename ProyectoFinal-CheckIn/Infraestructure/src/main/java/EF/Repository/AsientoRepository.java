@@ -1,12 +1,11 @@
 package EF.Repository;
 
-import java.util.List;
-import java.util.UUID;
-
 import EF.Contexts.IWriteDbContext;
 import Fourteam.db.DbSet;
 import Modal.Asiento;
 import Repositories.IasientoRepository;
+import java.util.List;
+import java.util.UUID;
 
 public class AsientoRepository implements IasientoRepository {
 
@@ -38,5 +37,4 @@ public class AsientoRepository implements IasientoRepository {
     _asiento.Update(obj, (it -> it.key.equals(obj.key)));
     return obj;
   }
-
 }

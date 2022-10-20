@@ -1,10 +1,10 @@
 package UseCases.Queries.pasajero.GetById;
 
 import Dto.PasajeroDto;
-import Modal.Pasajero;
-import Repositories.IpasajeroRepository;
 import Fourteam.http.Exception.HttpException;
 import Fourteam.mediator.RequestHandler;
+import Modal.Pasajero;
+import Repositories.IpasajeroRepository;
 
 public class GetPasajeroByIdHandler implements RequestHandler<GetPasajeroByIdQuery, PasajeroDto> {
 

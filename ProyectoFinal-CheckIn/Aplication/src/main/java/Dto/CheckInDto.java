@@ -17,8 +17,7 @@ public class CheckInDto {
   public UUID KeyVenta;
   public List<EquipajeDto> EquipajeDto;
 
-  public CheckInDto() {
-  }
+  public CheckInDto() {}
 
   public UUID getKeyVenta() {
     return this.KeyVenta;

@@ -1,12 +1,12 @@
 package UseCases.Command.CheckIn.Delete;
 
+import Fourteam.http.Exception.HttpException;
+import Fourteam.http.HttpStatus;
+import Fourteam.mediator.RequestHandler;
 import Modal.CheckIn;
 import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
 import factories.ICheckInFactory;
-import Fourteam.http.Exception.HttpException;
-import Fourteam.http.HttpStatus;
-import Fourteam.mediator.RequestHandler;
 import java.util.UUID;
 
 public class DeleteCheckInHandler implements RequestHandler<DeleteCheckInCommand, UUID> {

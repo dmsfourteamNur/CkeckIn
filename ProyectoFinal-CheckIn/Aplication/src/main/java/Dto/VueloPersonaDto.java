@@ -97,5 +97,4 @@ public class VueloPersonaDto {
   public void setDni(int dni) {
     this.dni = dni;
   }
-
 }

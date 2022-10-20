@@ -1,8 +1,8 @@
 package UseCases.Command.CheckIn.Delete;
 
 import Dto.CheckInDto;
-import Modal.CheckIn;
 import Fourteam.mediator.Request;
+import Modal.CheckIn;
 import java.util.UUID;
 
 public class DeleteCheckInCommand implements Request<UUID> {

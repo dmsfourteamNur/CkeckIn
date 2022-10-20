@@ -4,6 +4,8 @@ import EF.Repository.CheckInRepository;
 import EF.Repository.ItinerarioRepository;
 import EF.Repository.pasajeroRepositorio;
 import EF.UnitOfWork;
+import Fourteam.config.Config;
+import Fourteam.extensions.IServiceCollection;
 import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
 import Repositories.IitinerarioRepository;
@@ -11,8 +13,6 @@ import Repositories.IpasajeroRepository;
 import UseCases.Consumers.VentaCreadoConsumer;
 import UseCases.Consumers.VueloCreadoConsumer;
 import factories.itinerario.IitinerarioFactory;
-import Fourteam.config.Config;
-import Fourteam.extensions.IServiceCollection;
 
 public class ExtensionsInfrastructure {
 

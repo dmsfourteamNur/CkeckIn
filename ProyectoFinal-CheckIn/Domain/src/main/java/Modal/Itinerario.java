@@ -15,11 +15,12 @@ public class Itinerario extends AggregateRoot<UUID> {
   private List<Asiento> asiento;
 
   public Itinerario(
-      UUID keyVuelo,
-      String origen,
-      String destino,
-      Date fechaSalida,
-      Date fechaArribe) {
+    UUID keyVuelo,
+    String origen,
+    String destino,
+    Date fechaSalida,
+    Date fechaArribe
+  ) {
     this.key = keyVuelo;
     this.origen = origen;
     this.destino = destino;
@@ -72,5 +73,4 @@ public class Itinerario extends AggregateRoot<UUID> {
   public void setAsiento(List<Asiento> asiento) {
     this.asiento = asiento;
   }
-
 }

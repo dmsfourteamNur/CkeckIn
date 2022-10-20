@@ -13,5 +13,4 @@ public interface IcheckInRepository extends IRepository<CheckIn, UUID> {
   public CheckIn Delete(CheckIn checkIn) throws Exception;
 
   public CheckIn Update(CheckIn checkIn) throws Exception;
-
 }

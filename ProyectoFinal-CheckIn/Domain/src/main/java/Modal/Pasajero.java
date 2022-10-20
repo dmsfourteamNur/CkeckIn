@@ -10,8 +10,7 @@ public class Pasajero extends AggregateRoot<UUID> {
   private String apellido;
   private int dni;
 
-  public Pasajero() {
-  }
+  public Pasajero() {}
 
   public Pasajero(UUID keyVuelo, UUID keyVenta, String nombre, String apellido, int dni) {
     this.key = keyVuelo;
@@ -52,5 +51,4 @@ public class Pasajero extends AggregateRoot<UUID> {
   public void setDni(int dni) {
     this.dni = dni;
   }
-
 }

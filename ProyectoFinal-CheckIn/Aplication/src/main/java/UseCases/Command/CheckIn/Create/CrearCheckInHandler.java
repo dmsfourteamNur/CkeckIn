@@ -1,5 +1,8 @@
 package UseCases.Command.CheckIn.Create;
 
+import Fourteam.http.Exception.HttpException;
+import Fourteam.http.HttpStatus;
+import Fourteam.mediator.RequestHandler;
 import Modal.Asiento;
 import Modal.CheckIn;
 import Modal.Itinerario;
@@ -11,12 +14,8 @@ import Repositories.IpasajeroRepository;
 import Services.CheckInServices;
 import core.IRepository;
 import factories.ICheckInFactory;
-import Fourteam.http.HttpStatus;
-import Fourteam.http.Exception.HttpException;
-import Fourteam.mediator.RequestHandler;
 import java.util.Iterator;
 import java.util.UUID;
-
 import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, UUID> {
@@ -29,9 +28,15 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
   private IitinerarioRepository _IitinerarioRepository;
   private IpasajeroRepository _IpasajeroRepository;
 
-  public CrearCheckInHandler(IcheckInRepository CheckInRepository, ICheckInFactory CheckInFactory,
-      CheckInServices inService, IUnitOfWork _unitOfWork, IcheckInRepository _checkInRepository,
-      IitinerarioRepository _IitinerarioRepository, IpasajeroRepository ipasajeroRepository) {
+  public CrearCheckInHandler(
+    IcheckInRepository CheckInRepository,
+    ICheckInFactory CheckInFactory,
+    CheckInServices inService,
+    IUnitOfWork _unitOfWork,
+    IcheckInRepository _checkInRepository,
+    IitinerarioRepository _IitinerarioRepository,
+    IpasajeroRepository ipasajeroRepository
+  ) {
     this.CheckInRepository = CheckInRepository;
     this.CheckInFactory = CheckInFactory;
     this.inService = inService;
@@ -60,33 +65,41 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
       throw new HttpException(HttpStatus.BAD_REQUEST, "EL VUELO NO EXISTE");
     }
 
-    Asiento asiento = itinerario.getAsiento().stream()
-        .filter(c -> c.key.equals(request.checkInDto.getKeyAsiento()))
-        .findAny().orElse(null);
+    Asiento asiento = itinerario
+      .getAsiento()
+      .stream()
+      .filter(c -> c.key.equals(request.checkInDto.getKeyAsiento()))
+      .findAny()
+      .orElse(null);
     if (asiento == null) {
       throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO NO EXISTE");
     }
 
-    CheckIn checkIn = _checkInRepository.GetAll().stream()
-        .filter(c -> c.getKeyAsiento().equals(request.checkInDto.getKeyAsiento()))
-        .findAny().orElse(null);
+    CheckIn checkIn = _checkInRepository
+      .GetAll()
+      .stream()
+      .filter(c -> c.getKeyAsiento().equals(request.checkInDto.getKeyAsiento()))
+      .findAny()
+      .orElse(null);
     if (checkIn != null) {
       throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO YA FUE ASIGNADO");
     }
 
     CheckIn objCheckIn = CheckInFactory.Create(
-        nroCheckIn,
-        request.checkInDto.getEstadoPaciente(),
-        request.checkInDto.getDescripcion(),
-        request.checkInDto.getNumeroAsiento(),
-        request.checkInDto.getKeyVuelo(),
-        request.checkInDto.getKeyAsiento(),
-        request.checkInDto.getKeyVenta());
+      nroCheckIn,
+      request.checkInDto.getEstadoPaciente(),
+      request.checkInDto.getDescripcion(),
+      request.checkInDto.getNumeroAsiento(),
+      request.checkInDto.getKeyVuelo(),
+      request.checkInDto.getKeyAsiento(),
+      request.checkInDto.getKeyVenta()
+    );
     for (var item : request.checkInDto.EquipajeDto) {
       objCheckIn.AgregarItem(
-          item.getPesoEquipaje(),
-          item.getNumeroEtiqueta(),
-          item.getDescripcion());
+        item.getPesoEquipaje(),
+        item.getNumeroEtiqueta(),
+        item.getDescripcion()
+      );
     }
 
     objCheckIn.checkInCompletado();
