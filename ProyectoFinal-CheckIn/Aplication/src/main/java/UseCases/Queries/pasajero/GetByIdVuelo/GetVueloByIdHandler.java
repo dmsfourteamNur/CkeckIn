@@ -16,6 +16,7 @@ public class GetVueloByIdHandler
     implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
 
   private IpasajeroRepository _IpasajeroRepository;
+
   private IitinerarioRepository _IitinerarioRepository;
 
   public GetVueloByIdHandler(
