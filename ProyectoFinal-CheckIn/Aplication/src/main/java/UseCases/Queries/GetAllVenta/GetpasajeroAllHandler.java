@@ -1,10 +1,9 @@
 package UseCases.Queries.GetAllVenta;
 
-import java.util.List;
-
 import Fourteam.mediator.RequestHandler;
 import Modal.Pasajero;
 import Repositories.IpasajeroRepository;
+import java.util.List;
 
 public class GetpasajeroAllHandler implements RequestHandler<GetpasajeroAllQuery, List<Pasajero>> {
 
@@ -18,5 +17,4 @@ public class GetpasajeroAllHandler implements RequestHandler<GetpasajeroAllQuery
   public List<Pasajero> handle(GetpasajeroAllQuery request) throws Exception {
     return _IpasajeroRepository.GetAll();
   }
-
 }

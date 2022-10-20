@@ -2,9 +2,9 @@ package UseCases.Queries.GetById;
 
 import Dto.CheckInDto;
 import Dto.EquipajeDto;
+import Fourteam.mediator.RequestHandler;
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
-import Fourteam.mediator.RequestHandler;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -7,8 +7,13 @@ import java.util.UUID;
 public class ItinerarioFactory implements IitinerarioFactory {
 
   @Override
-  public Itinerario Create(UUID key, String origen, String destino, Date fechaSalida,
-      Date fechaArribe) {
+  public Itinerario Create(
+    UUID key,
+    String origen,
+    String destino,
+    Date fechaSalida,
+    Date fechaArribe
+  ) {
     return new Itinerario(key, origen, destino, fechaSalida, fechaArribe);
   }
 }

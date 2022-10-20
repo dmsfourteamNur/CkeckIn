@@ -4,6 +4,8 @@ import Dto.CheckInDto;
 import Dto.ItinerarioDto;
 import Dto.PasajeroDto;
 import Dto.VueloPersonaDto;
+import Fourteam.http.annotation.*;
+import Fourteam.mediator.Mediator;
 import UseCases.Command.CheckIn.Create.CrearCheckInCommand;
 import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 import UseCases.Command.CheckIn.Edit.EditCheckInCommand;
@@ -13,8 +15,6 @@ import UseCases.Queries.GetAllVuelo.GetAllVueloQuery;
 import UseCases.Queries.GetById.GetCheckInByIdQuery;
 import UseCases.Queries.pasajero.GetById.GetPasajeroByIdQuery;
 import UseCases.Queries.pasajero.GetByIdVuelo.GetVueloPasajeroQuery;
-import Fourteam.http.annotation.*;
-import Fourteam.mediator.Mediator;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,7 +39,8 @@ public class CheckInController {
   }
 
   @GetMapping("/vuelo/{key}")
-  public VueloPersonaDto getByKeyVuelo(@PathVariable GetVueloPasajeroQuery request) throws Exception {
+  public VueloPersonaDto getByKeyVuelo(@PathVariable GetVueloPasajeroQuery request)
+    throws Exception {
     return (VueloPersonaDto) _mediator.send(request).data;
   }
 
@@ -65,8 +66,9 @@ public class CheckInController {
 
   @PutMapping("/{key}")
   public CheckInDto edit(
-      @RequestBody CheckInDto checkInDto,
-      @PathVariable EditCheckInCommand request) throws Exception {
+    @RequestBody CheckInDto checkInDto,
+    @PathVariable EditCheckInCommand request
+  ) throws Exception {
     request.checkInDto.CodigoSeguridad = checkInDto.CodigoSeguridad;
     return (CheckInDto) _mediator.send(request).data;
   }

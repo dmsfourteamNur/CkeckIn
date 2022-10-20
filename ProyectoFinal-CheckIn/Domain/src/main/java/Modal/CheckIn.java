@@ -19,17 +19,17 @@ public class CheckIn extends AggregateRoot<UUID> {
   public UUID KeyAsiento;
   public UUID KeyVenta;
 
-  public CheckIn() {
-  }
+  public CheckIn() {}
 
   public CheckIn(
-      String codigoSeguridad,
-      Boolean estadoPaciente,
-      String descripcion,
-      int numeroAsiento,
-      UUID keyVuelo,
-      UUID KeyAsiento,
-      UUID keyVenta) {
+    String codigoSeguridad,
+    Boolean estadoPaciente,
+    String descripcion,
+    int numeroAsiento,
+    UUID keyVuelo,
+    UUID KeyAsiento,
+    UUID keyVenta
+  ) {
     key = UUID.randomUUID();
     this.CodigoSeguridad = codigoSeguridad;
     this.EstadoPaciente = estadoPaciente;

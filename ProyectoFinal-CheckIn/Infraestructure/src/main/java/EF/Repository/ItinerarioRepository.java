@@ -1,12 +1,11 @@
 package EF.Repository;
 
-import java.util.List;
-import java.util.UUID;
-
 import EF.Contexts.IWriteDbContext;
 import Fourteam.db.DbSet;
 import Modal.Itinerario;
 import Repositories.IitinerarioRepository;
+import java.util.List;
+import java.util.UUID;
 
 public class ItinerarioRepository implements IitinerarioRepository {
 
@@ -42,5 +41,4 @@ public class ItinerarioRepository implements IitinerarioRepository {
     itinerario.Update(obj, (it -> it.key.equals(obj.key)));
     return obj;
   }
-
 }

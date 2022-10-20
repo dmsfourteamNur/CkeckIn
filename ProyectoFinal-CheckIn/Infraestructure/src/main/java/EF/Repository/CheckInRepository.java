@@ -1,9 +1,9 @@
 package EF.Repository;
 
 import EF.Contexts.IWriteDbContext;
+import Fourteam.db.DbSet;
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
-import Fourteam.db.DbSet;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,5 +41,4 @@ public class CheckInRepository implements IcheckInRepository {
     _checkIn.Update(obj, (it -> it.key.equals(obj.key)));
     return obj;
   }
-
 }

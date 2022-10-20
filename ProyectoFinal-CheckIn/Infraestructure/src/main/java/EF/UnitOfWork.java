@@ -1,13 +1,12 @@
 package EF;
 
+import EF.Contexts.IWriteDbContext;
+import Fourteam.db.Exception.DataBaseException;
+import Fourteam.mediator.Mediator;
 import Repositories.IUnitOfWork;
 import core.ConfirmedDomainEvent;
 import core.DomainEvent;
-import Fourteam.db.Exception.DataBaseException;
-import Fourteam.mediator.Mediator;
 import java.util.List;
-
-import EF.Contexts.IWriteDbContext;
 
 public class UnitOfWork implements IUnitOfWork {
 
@@ -26,9 +25,7 @@ public class UnitOfWork implements IUnitOfWork {
       try {
         DomainEvent event = (DomainEvent) domainEvent;
         _mediator.notify(event);
-      } catch (Exception e) {
-      }
-
+      } catch (Exception e) {}
     }
     try {
       _context.Commit();
@@ -40,8 +37,7 @@ public class UnitOfWork implements IUnitOfWork {
       try {
         DomainEvent event = (DomainEvent) domainEvent;
         _mediator.notify(MakeGeneryc(event));
-      } catch (Exception e) {
-      }
+      } catch (Exception e) {}
     }
   }
 

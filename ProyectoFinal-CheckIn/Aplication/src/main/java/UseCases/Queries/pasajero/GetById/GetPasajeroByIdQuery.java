@@ -1,9 +1,8 @@
 package UseCases.Queries.pasajero.GetById;
 
-import java.util.UUID;
-
 import Dto.PasajeroDto;
 import Fourteam.mediator.Request;
+import java.util.UUID;
 
 public class GetPasajeroByIdQuery implements Request<PasajeroDto> {
 
