@@ -35,7 +35,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if anyy
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd CkeckIn && mvn jacoco:prepare-agent test install jacoco:report && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=dmsfourteamNur_CkeckIn
+        run: cd ProyectoFinal-CheckIn && mvn jacoco:prepare-agent test install jacoco:report && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=dmsfourteamNur_CkeckIn
 
   release:
     needs: compilacion
@@ -61,4 +61,4 @@ jobs:
               StrictHostKeyChecking no
           END
       - name: Docker build
-        run: ssh staging 'cd ProyectoFinal-CheckIn && bash ./deploy.sh'
+        run: ssh staging 'cd CkeckIn && bash ./deploy.sh'
