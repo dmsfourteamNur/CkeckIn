@@ -41,7 +41,7 @@ public class GetVueloByIdHandler implements RequestHandler<GetVueloPasajeroQuery
           "EL PASAJERO NO TIENE ASIGNADO NINGUN VUELO"
         );
       }
-      vueloPersonaDto.setKeyVenta(pasajero.getKey());
+      vueloPersonaDto.setKeyVenta(pasajero.getKeyVenta());
       vueloPersonaDto.setKeyVuelo(pasajero.getKey());
       vueloPersonaDto.setNombre(pasajero.getNombre());
       vueloPersonaDto.setApellido(pasajero.getApellido());
