@@ -63,23 +63,24 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
     }
 
     // Asiento asiento = itinerario
-    //     .getAsiento()
-    //     .stream()
-    //     .filter(c -> c.key.equals(request.checkInDto.getKeyAsiento()))
-    //     .findAny()
-    //     .orElse(null);
+    // .getAsiento()
+    // .stream()
+    // .filter(c -> c.key.equals(request.checkInDto.getKeyAsiento()))
+    // .findAny()
+    // .orElse(null);
     // if (asiento == null) {
-    //   throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO NO EXISTE");
+    // throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO NO EXISTE");
     // }
 
     // CheckIn checkIn = _checkInRepository
-    //     .GetAll()
-    //     .stream()
-    //     .filter(c -> c.getKeyAsiento().equals(request.checkInDto.getKeyAsiento()))
-    //     .findAny()
-    //     .orElse(null);
+    // .GetAll()
+    // .stream()
+    // .filter(c -> c.getKeyAsiento().equals(request.checkInDto.getKeyAsiento()))
+    // .findAny()
+    // .orElse(null);
     // if (checkIn != null) {
-    //   throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO YA FUE ASIGNADO");
+    // throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO YA FUE
+    // ASIGNADO");
     // }
 
     CheckIn objCheckIn = CheckInFactory.Create(
