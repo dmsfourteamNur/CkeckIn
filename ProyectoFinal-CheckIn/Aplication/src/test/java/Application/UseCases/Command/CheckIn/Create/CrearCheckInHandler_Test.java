@@ -6,6 +6,8 @@ import Dto.CheckInDto;
 import Dto.EquipajeDto;
 import Events.CheckInCreado;
 import Modal.CheckIn;
+import Modal.Itinerario;
+import Modal.Pasajero;
 import Repositories.IUnitOfWork;
 import Repositories.IcheckInRepository;
 import Repositories.IitinerarioRepository;
@@ -15,7 +17,9 @@ import UseCases.Command.CheckIn.Create.CrearCheckInCommand;
 import UseCases.Command.CheckIn.Create.CrearCheckInHandler;
 import factories.CheckInFactory;
 import factories.ICheckInFactory;
+import factories.pasajero.PasajeroFactory;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import org.junit.Assert;
@@ -59,8 +63,22 @@ public class CrearCheckInHandler_Test {
     )
       .thenReturn(objCheckIn);
 
+    String nombre = "Juancito";
+    String apellido = "Perez";
+    int dni = 9782736;
+
+    Pasajero p = new Pasajero(keyVuelo, keyVenta, nombre, apellido, dni);
+    when(ipasajeroRepository.FindByKeyVenta(any())).thenReturn(p);
+    when(ipasajeroRepository.FindByKeyVuelo(any())).thenReturn(p);
+
+    String origen = "scz";
+    String destino = "lpz";
+    Date fechaSalida = new Date();
+    Date fechaArribe = new Date();
+    Itinerario itinerario = new Itinerario(keyVuelo, origen, destino, fechaSalida, fechaArribe);
+    when(iitinerarioRepository.FindByKey(any())).thenReturn(itinerario);
+
     CrearCheckInHandler handler = new CrearCheckInHandler(
-      checkInRepository,
       checkInFactory,
       checkInServices,
       _unitOfWork,
@@ -70,21 +88,20 @@ public class CrearCheckInHandler_Test {
     );
 
     CheckInDto checkInDto = new CheckInDto();
-    checkInDto.setCodigoSeguridad(CodigoSeguridad);
-    checkInDto.setNumeroAsiento(Asiento);
-    checkInDto.setEstadoPaciente(EstadoPaciente);
-    checkInDto.setDescripcion(Descripcion);
-    checkInDto.setEquipajeDto(Equipaje);
-    checkInDto.setKeyVuelo(keyVuelo);
-    checkInDto.setKeyVenta(keyVenta);
-    checkInDto.setKeyAsiento(keyAsiento);
+    checkInDto.CodigoSeguridad = CodigoSeguridad;
+    checkInDto.NumeroAsiento = Asiento;
+    checkInDto.EstadoPaciente = EstadoPaciente;
+    checkInDto.Descripcion = Descripcion;
+    checkInDto.EquipajeDto = Equipaje;
+    checkInDto.KeyVuelo = keyVuelo;
+    checkInDto.KeyVenta = keyVenta;
+    checkInDto.KeyAsiento = keyAsiento;
 
-    var objRequest = new CrearCheckInCommand(checkInDto);
+    CrearCheckInCommand objRequest = new CrearCheckInCommand(checkInDto);
     var resp = handler.handle(objRequest);
 
-    verify(checkInRepository.FindByKey(resp));
     verify(_unitOfWork).commit();
-    verify(checkInServices).GenerarNroPedidoAsync();
+    Assert.assertNotNull(resp);
 
     Assert.assertEquals(CheckInCreado.class, objCheckIn.domainEvents.get(0).getClass());
   }

@@ -12,7 +12,6 @@ import Repositories.IitinerarioRepository;
 import Repositories.IpasajeroRepository;
 import UseCases.Consumers.VentaCreadoConsumer;
 import UseCases.Consumers.VueloCreadoConsumer;
-import factories.itinerario.IitinerarioFactory;
 
 public class ExtensionsInfrastructure {
 

@@ -22,12 +22,6 @@ public class PasajeroDto_Test {
 
     PasajeroDto pasajeroDto = new PasajeroDto();
 
-    Assert.assertNull(pasajeroDto.getDni());
-    Assert.assertNull(pasajeroDto.getKeyVenta());
-    Assert.assertNull(pasajeroDto.getKeyVuelo());
-    Assert.assertNull(pasajeroDto.getNombre());
-    Assert.assertNull(pasajeroDto.getApellido());
-
     pasajeroDto.setDni(dni);
     pasajeroDto.setKeyVuelo(keyVuelo);
     pasajeroDto.setKeyVenta(keyVenta);

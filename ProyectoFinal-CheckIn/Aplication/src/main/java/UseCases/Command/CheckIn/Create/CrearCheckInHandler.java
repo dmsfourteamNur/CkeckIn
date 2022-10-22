@@ -20,7 +20,6 @@ import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, UUID> {
 
-  private IcheckInRepository CheckInRepository;
   private ICheckInFactory CheckInFactory;
   private CheckInServices inService;
   private IUnitOfWork _unitOfWork;
@@ -29,7 +28,6 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
   private IpasajeroRepository _IpasajeroRepository;
 
   public CrearCheckInHandler(
-    IcheckInRepository CheckInRepository,
     ICheckInFactory CheckInFactory,
     CheckInServices inService,
     IUnitOfWork _unitOfWork,
@@ -37,7 +35,6 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
     IitinerarioRepository _IitinerarioRepository,
     IpasajeroRepository ipasajeroRepository
   ) {
-    this.CheckInRepository = CheckInRepository;
     this.CheckInFactory = CheckInFactory;
     this.inService = inService;
     this._unitOfWork = _unitOfWork;
@@ -65,25 +62,25 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
       throw new HttpException(HttpStatus.BAD_REQUEST, "EL VUELO NO EXISTE");
     }
 
-    Asiento asiento = itinerario
-      .getAsiento()
-      .stream()
-      .filter(c -> c.key.equals(request.checkInDto.getKeyAsiento()))
-      .findAny()
-      .orElse(null);
-    if (asiento == null) {
-      throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO NO EXISTE");
-    }
+    // Asiento asiento = itinerario
+    //     .getAsiento()
+    //     .stream()
+    //     .filter(c -> c.key.equals(request.checkInDto.getKeyAsiento()))
+    //     .findAny()
+    //     .orElse(null);
+    // if (asiento == null) {
+    //   throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO NO EXISTE");
+    // }
 
-    CheckIn checkIn = _checkInRepository
-      .GetAll()
-      .stream()
-      .filter(c -> c.getKeyAsiento().equals(request.checkInDto.getKeyAsiento()))
-      .findAny()
-      .orElse(null);
-    if (checkIn != null) {
-      throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO YA FUE ASIGNADO");
-    }
+    // CheckIn checkIn = _checkInRepository
+    //     .GetAll()
+    //     .stream()
+    //     .filter(c -> c.getKeyAsiento().equals(request.checkInDto.getKeyAsiento()))
+    //     .findAny()
+    //     .orElse(null);
+    // if (checkIn != null) {
+    //   throw new HttpException(HttpStatus.BAD_REQUEST, "EL ASIENTO YA FUE ASIGNADO");
+    // }
 
     CheckIn objCheckIn = CheckInFactory.Create(
       nroCheckIn,
@@ -103,7 +100,7 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
     }
 
     objCheckIn.checkInCompletado();
-    CheckInRepository.Create(objCheckIn);
+    _checkInRepository.Create(objCheckIn);
     _unitOfWork.commit();
     return objCheckIn.key;
   }

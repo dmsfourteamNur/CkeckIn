@@ -8,6 +8,14 @@ public class Asiento {
   private int numeroAsiento;
   private int disponibilidad;
 
+  public Asiento() {}
+
+  public Asiento(UUID key, int numeroAsiento, int disponibilidad) {
+    this.key = key;
+    this.numeroAsiento = numeroAsiento;
+    this.disponibilidad = disponibilidad;
+  }
+
   public UUID getKey() {
     return this.key;
   }

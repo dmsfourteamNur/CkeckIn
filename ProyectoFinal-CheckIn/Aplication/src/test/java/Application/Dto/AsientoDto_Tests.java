@@ -13,11 +13,7 @@ public class AsientoDto_Tests {
     int numeroAsiento = 23;
     int disponibilidad = 0;
 
-    Asiento asiento = new Asiento();
-
-    Assert.assertNull(asiento.getKey());
-    Assert.assertNull(asiento.getNumeroAsiento());
-    Assert.assertNull(asiento.getDisponibilidad());
+    Asiento asiento = new Asiento(key, numeroAsiento, disponibilidad);
 
     asiento.setKey(key);
     asiento.setNumeroAsiento(numeroAsiento);

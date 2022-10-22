@@ -28,20 +28,6 @@ public class CheckInRepository_Test {
   }
 
   @Test
-  public void HandleCheckInRegistrado_Ok() throws HttpException, DataBaseException {
-    String CodigoSeguridad = "dsfds";
-    int Asiento = 33;
-    Boolean EstadoPaciente = true;
-    String Descripcion = "haskjhfaksjf";
-
-    IWriteDbContext bdTest = new WriteDbContext();
-    CheckInRepository checkInRepository = new CheckInRepository(bdTest);
-    // CheckIn objCheckIn = new CheckIn(CodigoSeguridad, EstadoPaciente,
-    // Descripcion, Asiento);
-    // objCheckIn.AgregarItem(3.2, "Sdfds", "asdasfasa");
-  }
-
-  @Test
   public void GetAll_Test() throws Exception {
     CheckInRepository checkInRepository = new CheckInRepository(bdTest);
     checkInRepository.GetAll();
