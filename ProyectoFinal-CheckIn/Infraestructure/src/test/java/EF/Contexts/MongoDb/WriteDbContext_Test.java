@@ -1,11 +1,19 @@
 package EF.Contexts.MongoDb;
 
+import EF.Contexts.MongoDB.WriteDbContext;
+import Fourteam.config.Config;
 import Modal.CheckIn;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
 public class WriteDbContext_Test {
+
+  @Before
+  public void setUp() {
+    Config.load(getClass().getClassLoader().getResource("config.properties").getFile());
+  }
 
   @Test
   public void constructor_accept() throws Exception {
