@@ -28,16 +28,6 @@ public class EquipajeRepository_Test {
   }
 
   @Test
-  public void HandleBaggageRegistrado_Ok() throws HttpException, DataBaseException {
-    Double PesoEquipaje = 23.3;
-    String NumeroEtiqueta = "sdfd33f3";
-    String Descripcion = "sdsfsfse";
-    IWriteDbContext bdTest = new WriteDbContext();
-    EquipajeRepository baggageRepository = new EquipajeRepository(bdTest);
-    Equipaje objBaggage = new Equipaje(PesoEquipaje, NumeroEtiqueta, Descripcion);
-  }
-
-  @Test
   public void GetAll_Test() throws Exception {
     EquipajeRepository baggageRepository = new EquipajeRepository(bdTest);
     baggageRepository.GetAll();

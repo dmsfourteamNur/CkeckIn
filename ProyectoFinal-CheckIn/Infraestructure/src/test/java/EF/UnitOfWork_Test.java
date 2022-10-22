@@ -26,7 +26,7 @@ public class UnitOfWork_Test {
   @Test
   public void commit_accept() throws Exception {
     UnitOfWork unitOfWork = new UnitOfWork(_context, _mediator);
-    List<Object> list = new ArrayList<>();
+    List<Object> list = new ArrayList<Object>();
     list.add(new DomainEvent() {});
     when(_context.getDomainEvents()).thenReturn(list);
     try {
