@@ -28,10 +28,10 @@ public class CheckInController {
     this._mediator = mediator;
   }
 
-  // @GetMapping("/{key}")
-  // public CheckInDto getByKey(@PathVariable GetCheckInByIdQuery request) throws Exception {
-  //   return (CheckInDto) _mediator.send(request).data;
-  // }
+  @GetMapping("by/{key}")
+  public CheckInDto getByKey(@PathVariable GetCheckInByIdQuery request) throws Exception {
+    return (CheckInDto) _mediator.send(request).data;
+  }
 
   @GetMapping("/venta/{key}")
   public PasajeroDto getByKeyVenta(@PathVariable GetPasajeroByIdQuery request) throws Exception {
