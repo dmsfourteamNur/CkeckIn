@@ -1,11 +1,10 @@
 package Application.Dto;
 
-import Dto.CheckInDto;
 import Dto.EquipajeDto;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class BaggageDto_Test {
+public class EquipajeDto_Test {
 
   @Test
   public void CheckPropertiesValid() {
