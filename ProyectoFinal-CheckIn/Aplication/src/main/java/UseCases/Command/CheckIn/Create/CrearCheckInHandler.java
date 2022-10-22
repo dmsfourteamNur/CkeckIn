@@ -99,8 +99,6 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
         item.getDescripcion()
       );
     }
-
-    objCheckIn.checkInCompletado();
     _checkInRepository.Create(objCheckIn);
     _unitOfWork.commit();
     return objCheckIn.key;

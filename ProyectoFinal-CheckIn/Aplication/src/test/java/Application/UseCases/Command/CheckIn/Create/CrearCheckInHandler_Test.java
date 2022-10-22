@@ -102,8 +102,6 @@ public class CrearCheckInHandler_Test {
 
     verify(_unitOfWork).commit();
     Assert.assertNotNull(resp);
-
-    Assert.assertEquals(CheckInCreado.class, objCheckIn.domainEvents.get(0).getClass());
   }
 
   private List<EquipajeDto> getBaggage() {
