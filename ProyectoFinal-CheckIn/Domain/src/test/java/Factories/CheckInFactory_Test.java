@@ -16,13 +16,32 @@ public class CheckInFactory_Test {
 
   @Test
   public void HandleCheckFactory_Ok() throws HttpException {
-    //   String CodigoSeguridad = "dsfds";
-    //   int NumeroAsiento = 33;
-    //   Boolean EstadoPaciente = true;
-    //   String Descripcion = "haskjhfaksjf";
-    //   CheckIn objCheckIn = new CheckIn(CodigoSeguridad, EstadoPaciente, Descripcion, NumeroAsiento, );
+    String CodigoSeguridad = "dsfds";
+    int NumeroAsiento = 33;
+    Boolean EstadoPaciente = true;
+    UUID keyVenta = UUID.randomUUID();
+    UUID keyVuelo = UUID.randomUUID();
+    UUID keyasiento = UUID.randomUUID();
 
-    //   CheckInFactory checkInFactory = new CheckInFactory();
-    //   CheckIn checkIn = checkInFactory.Create(anyString(), anyBoolean(), anyString(), anyInt());
+    CheckIn objCheckIn = new CheckIn(
+      CodigoSeguridad,
+      EstadoPaciente,
+      CodigoSeguridad,
+      NumeroAsiento,
+      keyVuelo,
+      keyasiento,
+      keyVenta
+    );
+
+    CheckInFactory checkInFactory = new CheckInFactory();
+    CheckIn checkIn = checkInFactory.Create(
+      anyString(),
+      anyBoolean(),
+      anyString(),
+      anyInt(),
+      any(),
+      any(),
+      any()
+    );
   }
 }
