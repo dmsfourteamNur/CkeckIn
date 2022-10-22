@@ -4,11 +4,8 @@
 name: Java CI with Maven
 
 on:
-    push:
-        branches: ['develop']
-    pull_request:
-        branches: ['main', 'develop']
-        types: [opened, synchronize, reopened]
+  push:
+    branches: ['develop']
 jobs:
   build:
     name: Build
