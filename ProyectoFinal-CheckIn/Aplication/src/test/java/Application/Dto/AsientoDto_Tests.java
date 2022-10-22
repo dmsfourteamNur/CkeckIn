@@ -13,7 +13,7 @@ public class AsientoDto_Tests {
     int numeroAsiento = 23;
     int disponibilidad = 0;
 
-    Asiento asiento = new Asiento(key, numeroAsiento, disponibilidad);
+    Asiento asiento = new Asiento();
 
     asiento.setKey(key);
     asiento.setNumeroAsiento(numeroAsiento);

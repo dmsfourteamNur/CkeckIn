@@ -79,6 +79,7 @@ public class CrearCheckInHandler_Test {
     when(iitinerarioRepository.FindByKey(any())).thenReturn(itinerario);
 
     CrearCheckInHandler handler = new CrearCheckInHandler(
+      checkInRepository,
       checkInFactory,
       checkInServices,
       _unitOfWork,
