@@ -14,6 +14,8 @@ public class Itinerario extends AggregateRoot<UUID> {
   private Date fechaArribe;
   private List<Asiento> asiento;
 
+  public Itinerario() {}
+
   public Itinerario(
     UUID keyVuelo,
     String origen,
