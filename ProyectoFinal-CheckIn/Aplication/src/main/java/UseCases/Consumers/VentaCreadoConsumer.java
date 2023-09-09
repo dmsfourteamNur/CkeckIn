@@ -5,8 +5,6 @@ import Modal.Pasajero;
 import Repositories.IUnitOfWork;
 import Repositories.IpasajeroRepository;
 import factories.pasajero.IPasajeroFactory;
-import factories.pasajero.PasajeroFactory;
-import java.util.UUID;
 
 public class VentaCreadoConsumer extends IConsumer<IntegrationEvents.VentaCreado> {
 
@@ -17,10 +15,9 @@ public class VentaCreadoConsumer extends IConsumer<IntegrationEvents.VentaCreado
   private IUnitOfWork _unitOfWork;
 
   public VentaCreadoConsumer(
-    IpasajeroRepository ipasajeroRepository,
-    IPasajeroFactory iPasajeroFactory,
-    IUnitOfWork _unitOfWork
-  ) {
+      IpasajeroRepository ipasajeroRepository,
+      IPasajeroFactory iPasajeroFactory,
+      IUnitOfWork _unitOfWork) {
     this.ipasajeroRepository = ipasajeroRepository;
     this.iPasajeroFactory = iPasajeroFactory;
     this._unitOfWork = _unitOfWork;
@@ -30,12 +27,11 @@ public class VentaCreadoConsumer extends IConsumer<IntegrationEvents.VentaCreado
   public void Consume(IntegrationEvents.VentaCreado object) {
     try {
       Pasajero pasajero = iPasajeroFactory.Create(
-        object.getKeyVuelo(),
-        object.getKey(),
-        object.getNombre(),
-        object.getApellido(),
-        Integer.parseInt(object.getDni())
-      );
+          object.getKeyVuelo(),
+          object.getKey(),
+          object.getNombre(),
+          object.getApellido(),
+          Integer.parseInt(object.getDni()));
       ipasajeroRepository.Create(pasajero);
     } catch (Exception e) {
       e.printStackTrace();

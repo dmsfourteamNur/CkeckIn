@@ -11,16 +11,12 @@ import java.util.UUID;
 
 public class DeleteCheckInHandler implements RequestHandler<DeleteCheckInCommand, UUID> {
 
-  private ICheckInFactory _checkInFactory;
   private IcheckInRepository _icheckInRepository;
   private IUnitOfWork _unitOfWork;
 
   public DeleteCheckInHandler(
-    ICheckInFactory checkInFactory,
-    IcheckInRepository icheckInRepository,
-    IUnitOfWork _unitOfWork
-  ) {
-    this._checkInFactory = checkInFactory;
+      IcheckInRepository icheckInRepository,
+      IUnitOfWork _unitOfWork) {
     this._icheckInRepository = icheckInRepository;
     this._unitOfWork = _unitOfWork;
   }

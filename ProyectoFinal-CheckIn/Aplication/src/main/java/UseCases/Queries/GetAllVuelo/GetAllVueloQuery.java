@@ -5,5 +5,6 @@ import Fourteam.mediator.Request;
 
 public class GetAllVueloQuery implements Request<ItinerarioDto> {
 
-  public GetAllVueloQuery() {}
+  public GetAllVueloQuery() {
+  }
 }

@@ -29,16 +29,17 @@ public class GetCheckInByIdHandler_Test {
     UUID keyVenta = UUID.randomUUID();
 
     CheckIn objCheckIn = new CheckIn(
-      CodigoSeguridad,
-      EstadoPaciente,
-      Descripcion,
-      Asiento,
-      keyVuelo,
-      keyAsiento,
-      keyVenta
-    );
+        CodigoSeguridad,
+        EstadoPaciente,
+        Descripcion,
+        Asiento,
+        keyVuelo,
+        keyAsiento,
+        keyVenta);
     objCheckIn.AgregarItem(3.2, "Sdfds", "asdasfasa");
+
     when(icheckInRepository.FindByKey(any())).thenReturn(objCheckIn);
+
     GetCheckInByIdHandler handler = new GetCheckInByIdHandler(icheckInRepository);
     GetCheckInByIdQuery query = new GetCheckInByIdQuery(objCheckIn.getKey());
     CheckInDto resp = handler.handle(query);

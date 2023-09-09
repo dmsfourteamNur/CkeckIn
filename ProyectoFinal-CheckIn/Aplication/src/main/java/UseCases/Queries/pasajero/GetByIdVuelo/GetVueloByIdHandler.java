@@ -15,13 +15,11 @@ import java.util.List;
 public class GetVueloByIdHandler implements RequestHandler<GetVueloPasajeroQuery, VueloPersonaDto> {
 
   private IpasajeroRepository _IpasajeroRepository;
-
   private IitinerarioRepository _IitinerarioRepository;
 
   public GetVueloByIdHandler(
-    IpasajeroRepository ipasajeroRepository,
-    IitinerarioRepository iitinerarioRepository
-  ) {
+      IpasajeroRepository ipasajeroRepository,
+      IitinerarioRepository iitinerarioRepository) {
     this._IpasajeroRepository = ipasajeroRepository;
     this._IitinerarioRepository = iitinerarioRepository;
   }
@@ -37,9 +35,8 @@ public class GetVueloByIdHandler implements RequestHandler<GetVueloPasajeroQuery
       Itinerario itinerario = _IitinerarioRepository.FindByKey(pasajero.getKey());
       if (itinerario == null) {
         throw new HttpException(
-          HttpStatus.BAD_REQUEST,
-          "EL PASAJERO NO TIENE ASIGNADO NINGUN VUELO"
-        );
+            HttpStatus.BAD_REQUEST,
+            "EL PASAJERO NO TIENE ASIGNADO NINGUN VUELO");
       }
       vueloPersonaDto.setKeyVenta(pasajero.getKeyVenta());
       vueloPersonaDto.setKeyVuelo(pasajero.getKey());

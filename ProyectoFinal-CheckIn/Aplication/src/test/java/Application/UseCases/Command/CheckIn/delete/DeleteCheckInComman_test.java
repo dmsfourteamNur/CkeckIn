@@ -1,19 +1,21 @@
 package Application.UseCases.Command.CheckIn.delete;
 
-import Dto.CheckInDto;
-import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 import java.util.UUID;
 import org.junit.Assert;
 import org.junit.Test;
+import Dto.CheckInDto;
+import UseCases.Command.CheckIn.Delete.DeleteCheckInCommand;
 
 public class DeleteCheckInComman_test {
 
   @Test
-  public void dataValid() {
-    UUID id = UUID.randomUUID();
-    CheckInDto checkInDto = new CheckInDto();
-    checkInDto.setKey(id);
-    DeleteCheckInCommand command = new DeleteCheckInCommand(checkInDto.Key);
+  public void constructorSetsCheckInDto() throws Exception {
+    UUID key = UUID.randomUUID();
+    CheckInDto Dto = new CheckInDto();
+    Dto.Key = key;
+
+    DeleteCheckInCommand command = new DeleteCheckInCommand(Dto.Key);
+    Assert.assertEquals(Dto.Key, command.checkInDto.Key);
   }
 
   @Test
