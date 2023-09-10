@@ -5,8 +5,10 @@ import static org.mockito.ArgumentMatchers.any;
 import EF.Contexts.IWriteDbContext;
 import EF.Contexts.MongoDB.WriteDbContext;
 import Fourteam.db.DbSet;
+import Fourteam.db.IDbSet.BooleanFunction;
 import Fourteam.db.Exception.DataBaseException;
 import Fourteam.http.Exception.HttpException;
+import Modal.Asiento;
 import Modal.CheckIn;
 import java.util.UUID;
 import org.junit.Assert;
@@ -17,7 +19,8 @@ import org.mockito.Mockito;
 public class CheckInRepository_Test {
 
   @Before
-  public void setup() {}
+  public void setup() {
+  }
 
   IWriteDbContext bdTest = Mockito.mock(IWriteDbContext.class);
   Fourteam.db.DbSet<CheckIn> _CheckIn = Mockito.mock(DbSet.class);
@@ -25,6 +28,15 @@ public class CheckInRepository_Test {
   @Before
   public void setUp() {
     bdTest.checkIn = _CheckIn;
+  }
+
+  @Test
+  public void probando_lambda_by_key() {
+    CheckInRepository repository = new CheckInRepository(bdTest);
+    CheckIn a = new CheckIn();
+    a.key = UUID.randomUUID();
+    BooleanFunction<CheckIn> equalkey = repository.equalKey(a.key);
+    equalkey.run(a);
   }
 
   @Test

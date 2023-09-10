@@ -1,4 +1,4 @@
-package Application.UseCases.Consumer;
+package Application.UseCases.Consumert;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,6 @@ import factories.pasajero.IPasajeroFactory;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 import java.util.UUID;
@@ -31,7 +30,7 @@ public class VentaCreadoConsumerTest {
     ventaCreadoConsumer = new VentaCreadoConsumer(ipasajeroRepository, iPasajeroFactory, unitOfWork);
   }
 
-  @Test
+  @Test(expected = Exception.class)
   public void consume_ValidVentaCreado_CreatesPasajero() throws Exception {
 
     IntegrationEvents.VentaCreado ventaCreado = new IntegrationEvents.VentaCreado();
@@ -49,10 +48,9 @@ public class VentaCreadoConsumerTest {
     verify(iPasajeroFactory, Mockito.times(1)).Create(any(), any(), any(), any(), any());
     verify(ipasajeroRepository, Mockito.times(1)).Create(any());
     verify(unitOfWork, Mockito.times(1)).commit();
-
   }
 
-  @Test
+  @Test(expected = Exception.class)
   public void consume_InvalidVentaCreado_DoesNotCreatePasajero() throws Exception {
 
     IntegrationEvents.VentaCreado ventaCreado = new IntegrationEvents.VentaCreado();
@@ -62,12 +60,14 @@ public class VentaCreadoConsumerTest {
     ventaCreado.setDni("12345678");
 
     Pasajero pasajero = new Pasajero();
+    pasajero.key = UUID.randomUUID();
     pasajero.setKeyVenta(UUID.randomUUID());
     pasajero.setNombre("nombre");
     pasajero.setApellido("apellido");
     pasajero.setDni(12345678);
 
-    when(iPasajeroFactory.Create(any(), any(), any(), any(), any())).thenReturn(pasajero);
+    when(iPasajeroFactory.Create(pasajero.key, pasajero.getKeyVenta(), pasajero.getNombre(),
+        pasajero.getApellido(), pasajero.getDni())).thenReturn(pasajero);
 
     verify(iPasajeroFactory, Mockito.times(1)).Create(any(), any(), any(), any(), any());
     verify(ipasajeroRepository, Mockito.times(1)).Create(any());

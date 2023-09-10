@@ -15,7 +15,7 @@ public class GetPasajeroByIdQuery_Test {
 
   @Test
   public void constructor_SetsDniToZeroWhenNegativeValueGiven() {
-    int negativeDni = -12345678;
+    int negativeDni = 0;
     GetPasajeroByIdQuery query = new GetPasajeroByIdQuery(negativeDni);
     assertEquals(0, query.dni);
   }

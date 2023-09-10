@@ -5,8 +5,8 @@ import java.util.UUID;
 
 public class Asiento extends Entity<UUID> {
 
-  private int numeroAsiento;
-  private int disponibilidad;
+  public int numeroAsiento;
+  public int disponibilidad;
 
   public Asiento() {}
 

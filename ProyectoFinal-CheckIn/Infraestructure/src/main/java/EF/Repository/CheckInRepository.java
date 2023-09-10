@@ -2,6 +2,8 @@ package EF.Repository;
 
 import EF.Contexts.IWriteDbContext;
 import Fourteam.db.DbSet;
+import Fourteam.db.IDbSet.BooleanFunction;
+import Modal.Asiento;
 import Modal.CheckIn;
 import Repositories.IcheckInRepository;
 import java.util.List;
@@ -15,9 +17,13 @@ public class CheckInRepository implements IcheckInRepository {
     _checkIn = database.checkIn;
   }
 
+  public BooleanFunction<CheckIn> equalKey(UUID key) {
+    return obj -> obj.key.equals(key);
+  }
+
   @Override
   public CheckIn FindByKey(UUID key) throws Exception {
-    return _checkIn.Single(obj -> obj.key.equals(key));
+    return _checkIn.Single(equalKey(key));
   }
 
   @Override
@@ -32,13 +38,13 @@ public class CheckInRepository implements IcheckInRepository {
 
   @Override
   public CheckIn Delete(CheckIn obj) throws Exception {
-    _checkIn.Delete((it -> it.key.equals(obj.key)));
+    _checkIn.Delete(equalKey(obj.key));
     return obj;
   }
 
   @Override
   public CheckIn Update(CheckIn obj) throws Exception {
-    _checkIn.Update(obj, (it -> it.key.equals(obj.key)));
+    _checkIn.Update(obj, equalKey(obj.key));
     return obj;
   }
 }

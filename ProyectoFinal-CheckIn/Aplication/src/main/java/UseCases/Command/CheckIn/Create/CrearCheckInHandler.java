@@ -50,20 +50,20 @@ public class CrearCheckInHandler implements RequestHandler<CrearCheckInCommand, 
   public UUID handle(CrearCheckInCommand request) throws Exception {
     String nroCheckIn = inService.GenerarNroPedidoAsync();
 
-    Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.checkInDto.KeyVenta);
-    if (pasajero == null) {
-      throw new HttpException(HttpStatus.BAD_REQUEST, "LA VENTA NO EXISTE");
-    }
+    // Pasajero pasajero = _IpasajeroRepository.FindByKeyVenta(request.checkInDto.KeyVenta);
+    // if (pasajero == null) {
+    //   throw new HttpException(HttpStatus.BAD_REQUEST, "LA VENTA NO EXISTE");
+    // }
 
-    Pasajero pasajeroVuelo = _IpasajeroRepository.FindByKeyVuelo(request.checkInDto.KeyVuelo);
-    if (pasajeroVuelo == null) {
-      throw new HttpException(HttpStatus.BAD_REQUEST, "EL PASAJERO NO ESTA ASIGNADO A ESTE VUELO");
-    }
+    // Pasajero pasajeroVuelo = _IpasajeroRepository.FindByKeyVuelo(request.checkInDto.KeyVuelo);
+    // if (pasajeroVuelo == null) {
+    //   throw new HttpException(HttpStatus.BAD_REQUEST, "EL PASAJERO NO ESTA ASIGNADO A ESTE VUELO");
+    // }
 
-    Itinerario itinerario = _IitinerarioRepository.FindByKey(request.checkInDto.getKeyVuelo());
-    if (itinerario == null) {
-      throw new HttpException(HttpStatus.BAD_REQUEST, "EL VUELO NO EXISTE");
-    }
+    // Itinerario itinerario = _IitinerarioRepository.FindByKey(request.checkInDto.getKeyVuelo());
+    // if (itinerario == null) {
+    //   throw new HttpException(HttpStatus.BAD_REQUEST, "EL VUELO NO EXISTE");
+    // }
 
     // Asiento asiento = itinerario
     //     .getAsiento()

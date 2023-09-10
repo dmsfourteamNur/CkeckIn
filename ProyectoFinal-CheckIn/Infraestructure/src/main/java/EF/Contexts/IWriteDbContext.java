@@ -1,6 +1,6 @@
 package EF.Contexts;
 
-import Dto.Asiento;
+import Modal.Asiento;
 import Fourteam.db.DbContext;
 import Fourteam.db.DbSet;
 import Fourteam.db.Exception.DataBaseException;

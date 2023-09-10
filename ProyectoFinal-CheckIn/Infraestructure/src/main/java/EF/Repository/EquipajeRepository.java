@@ -2,6 +2,8 @@ package EF.Repository;
 
 import EF.Contexts.IWriteDbContext;
 import Fourteam.db.DbSet;
+import Fourteam.db.IDbSet.BooleanFunction;
+import Modal.CheckIn;
 import Modal.Equipaje;
 import Repositories.IequipajeRepository;
 import java.util.List;
@@ -15,9 +17,13 @@ public class EquipajeRepository implements IequipajeRepository {
     _equipaje = database.equipaje;
   }
 
+  public BooleanFunction<Equipaje> equalKey(UUID key) {
+    return obj -> obj.key.equals(key);
+  }
+
   @Override
   public Equipaje FindByKey(UUID key) throws Exception {
-    return _equipaje.Single(obj -> obj.key.equals(key));
+    return _equipaje.Single(equalKey(key));
   }
 
   @Override
@@ -32,13 +38,13 @@ public class EquipajeRepository implements IequipajeRepository {
 
   @Override
   public Equipaje Delete(Equipaje obj) throws Exception {
-    _equipaje.Delete((it -> it.key.equals(obj.key)));
+    _equipaje.Delete(equalKey(obj.key));
     return obj;
   }
 
   @Override
   public Equipaje Update(Equipaje obj) throws Exception {
-    _equipaje.Update(obj, (it -> it.key.equals(obj.key)));
+    _equipaje.Update(obj, equalKey(obj.key));
     return obj;
   }
 }

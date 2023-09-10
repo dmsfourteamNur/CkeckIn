@@ -2,6 +2,8 @@ package EF.Repository;
 
 import EF.Contexts.IWriteDbContext;
 import Fourteam.db.DbSet;
+import Fourteam.db.IDbSet.BooleanFunction;
+import Modal.Itinerario;
 import Modal.Pasajero;
 import Repositories.IpasajeroRepository;
 import java.util.List;
@@ -15,9 +17,13 @@ public class pasajeroRepositorio implements IpasajeroRepository {
     pasajero = database.pasajero;
   }
 
+  public BooleanFunction<Pasajero> equalKey(UUID key) {
+    return obj -> obj.key.equals(key);
+  }
+
   @Override
   public Pasajero FindByKey(UUID key) throws Exception {
-    return pasajero.Single(obj -> obj.key.toString().equals(key.toString()));
+    return pasajero.Single(equalKey(key));
   }
 
   @Override
@@ -32,13 +38,13 @@ public class pasajeroRepositorio implements IpasajeroRepository {
 
   @Override
   public Pasajero Delete(Pasajero obj) throws Exception {
-    pasajero.Delete((it -> it.key.equals(obj.key)));
+    pasajero.Delete(equalKey(obj.key));
     return obj;
   }
 
   @Override
   public Pasajero Update(Pasajero obj) throws Exception {
-    pasajero.Update(obj, (it -> it.key.equals(obj.key)));
+    pasajero.Update(obj, equalKey(obj.key));
     return obj;
   }
 

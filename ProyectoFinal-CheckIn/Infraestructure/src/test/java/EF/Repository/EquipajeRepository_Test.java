@@ -3,10 +3,9 @@ package EF.Repository;
 import static org.mockito.ArgumentMatchers.any;
 
 import EF.Contexts.IWriteDbContext;
-import EF.Contexts.MongoDB.WriteDbContext;
 import Fourteam.db.DbSet;
-import Fourteam.db.Exception.DataBaseException;
-import Fourteam.http.Exception.HttpException;
+import Fourteam.db.IDbSet.BooleanFunction;
+import Modal.CheckIn;
 import Modal.Equipaje;
 import java.util.UUID;
 import org.junit.Assert;
@@ -17,7 +16,8 @@ import org.mockito.Mockito;
 public class EquipajeRepository_Test {
 
   @Before
-  public void setup() {}
+  public void setup() {
+  }
 
   IWriteDbContext bdTest = Mockito.mock(IWriteDbContext.class);
   DbSet<Equipaje> _baggage = Mockito.mock(DbSet.class);
@@ -25,6 +25,15 @@ public class EquipajeRepository_Test {
   @Before
   public void setUp() {
     bdTest.equipaje = _baggage;
+  }
+
+  @Test
+  public void probando_lambda_by_key() {
+    EquipajeRepository repository = new EquipajeRepository(bdTest);
+    Equipaje a = new Equipaje();
+    a.key = UUID.randomUUID();
+    BooleanFunction<Equipaje> equalkey = repository.equalKey(a.key);
+    equalkey.run(a);
   }
 
   @Test
